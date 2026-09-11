@@ -7,12 +7,12 @@ export default function CourseCard({ course, className = '' }) {
       className={`group flex h-full flex-col overflow-hidden rounded-xl border border-anchor-border bg-anchor-surface transition-[border-color,box-shadow] hover:border-anchor-action/30 hover:shadow-md ${className}`}
     >
       {/* Photography */}
-      <div className="relative aspect-[16/9] shrink-0 bg-anchor-bg">
+      <div className="relative aspect-[16/9] min-h-0 shrink-0 bg-anchor-bg">
         <img
           src={course.image}
           alt={course.imageAlt}
           loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+          className="h-full min-h-0 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
         />
 
         {/* Instructor avatar overlapping lower edge of image */}
