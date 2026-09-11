@@ -53,7 +53,7 @@ export default function CourseCard({ course, className = '' }) {
           </div>
           <a
             href="#"
-            className="text-sm font-semibold text-anchor-action underline-offset-4 transition-colors hover:text-anchor-action-hover hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action"
+            className="text-sm font-semibold text-anchor-action underline-offset-4 transition-colors hover:text-anchor-action-hover hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-anchor-action"
           >
             View cohort
           </a>
