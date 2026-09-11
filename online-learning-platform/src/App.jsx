@@ -4,6 +4,7 @@ import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import Home from './pages/Home'
 import Catalog from './pages/Catalog'
+import CourseDetail from './pages/CourseDetail'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catalog" element={<Catalog />} />
+        <Route path="/courses/:slug" element={<CourseDetail />} />
       </Routes>
       <Footer />
     </BrowserRouter>

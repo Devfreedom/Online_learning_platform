@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import { formatStartLabel } from '../../utils/formatDate'
 import Avatar from './Avatar'
 
@@ -51,12 +52,12 @@ export default function CourseCard({ course, className = '' }) {
             </p>
             <p className="mt-1 text-lg font-bold text-anchor-text">{course.price}</p>
           </div>
-          <a
-            href="#"
+          <Link
+            to={`/courses/${course.slug}`}
             className="text-sm font-semibold text-anchor-action underline-offset-4 transition-colors hover:text-anchor-action-hover hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-anchor-action"
           >
             View cohort
-          </a>
+          </Link>
         </div>
       </div>
     </article>
