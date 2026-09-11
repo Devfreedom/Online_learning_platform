@@ -33,13 +33,11 @@ function MobileMenu({ open }) {
     >
       <nav className="mx-auto max-w-7xl space-y-1 px-4 pt-3 pb-4 sm:px-6">
         {NAV_LINKS.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
+          <NavItem
+            key={link.to ?? link.href}
+            link={link}
             className="block rounded-lg px-3 py-2 text-sm font-medium text-blue-100/75 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70"
-          >
-            {link.label}
-          </a>
+          />
         ))}
         <div className="mt-2 flex flex-col gap-2 border-t border-white/10 pt-3">
           <a
@@ -81,13 +79,11 @@ export default function Header() {
         {/* Desktop navigation */}
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
           {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
+            <NavItem
+              key={link.to ?? link.href}
+              link={link}
               className="rounded-md text-sm font-medium text-blue-100/75 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70"
-            >
-              {link.label}
-            </a>
+            />
           ))}
         </nav>
 
