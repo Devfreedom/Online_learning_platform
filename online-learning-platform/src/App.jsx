@@ -1,30 +1,31 @@
+import { useEffect } from 'react'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router'
 import Header from './components/layout/Header'
-import Hero from './components/sections/Hero'
-import CategoryBrowse from './components/sections/CategoryBrowse'
-import CourseGrid from './components/sections/CourseGrid'
-import HowCohortsWork from './components/sections/HowCohortsWork'
-import InstructorSpotlight from './components/sections/InstructorSpotlight'
-import Testimonials from './components/sections/Testimonials'
-import TrustStrip from './components/sections/TrustStrip'
-import FinalCTA from './components/sections/FinalCTA'
 import Footer from './components/layout/Footer'
+import Home from './pages/Home'
+import Catalog from './pages/Catalog'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return null
+}
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
+      <ScrollToTop />
       <Header />
-      <main>
-        <Hero />
-        <TrustStrip />
-        <CategoryBrowse />
-        <CourseGrid />
-        <HowCohortsWork />
-        <InstructorSpotlight />
-        <Testimonials />
-        <FinalCTA />
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/catalog" element={<Catalog />} />
+      </Routes>
       <Footer />
-    </>
+    </BrowserRouter>
   )
 }
 

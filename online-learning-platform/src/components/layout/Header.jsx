@@ -1,11 +1,27 @@
 import { useState } from 'react'
+import { Link } from 'react-router'
 
 const NAV_LINKS = [
-  { label: 'Browse Courses', href: '#courses' },
+  { label: 'Browse Courses', to: '/catalog' },
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'For Instructors', href: '#instructors' },
   { label: 'About', href: '#about' },
 ]
+
+function NavItem({ link, className }) {
+  if (link.to) {
+    return (
+      <Link key={link.to} to={link.to} className={className}>
+        {link.label}
+      </Link>
+    )
+  }
+  return (
+    <a key={link.href} href={link.href} className={className}>
+      {link.label}
+    </a>
+  )
+}
 
 function MobileMenu({ open }) {
   return (
