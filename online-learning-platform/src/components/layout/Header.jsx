@@ -40,18 +40,18 @@ function MobileMenu({ open }) {
           />
         ))}
         <div className="mt-2 flex flex-col gap-2 border-t border-white/10 pt-3">
-          <a
-            href="#"
+          <Link
+            to="/login"
             className="rounded-lg px-3 py-2 text-sm font-medium text-blue-100/75 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70"
           >
             Log in
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/signup"
             className="rounded-lg bg-anchor-action px-3 py-2 text-center text-sm font-semibold text-white transition-colors hover:bg-anchor-action-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-accent"
           >
             Get started
-          </a>
+          </Link>
         </div>
       </nav>
     </div>
@@ -89,18 +89,18 @@ export default function Header() {
 
         {/* Desktop actions */}
         <div className="hidden items-center gap-2 lg:flex">
-          <a
-            href="#"
+          <Link
+            to="/login"
             className="rounded-lg px-3 py-2 text-sm font-medium text-blue-100/75 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70"
           >
             Log in
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/signup"
             className="rounded-lg bg-anchor-action px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-anchor-action-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-anchor-accent"
           >
             Get started
-          </a>
+          </Link>
         </div>
 
         {/* Mobile toggle */}
