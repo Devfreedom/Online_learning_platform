@@ -1,56 +1,96 @@
-const courses = [
+import imgProductStrategy from '../assets/courses/product-strategy.jpg'
+import imgAppliedAi from '../assets/courses/applied-ai.jpg'
+import imgHighTrustTeams from '../assets/courses/high-trust-teams.jpg'
+import imgMarketingSystems from '../assets/courses/marketing-systems.jpg'
+import imgFrontendEngineering from '../assets/courses/frontend-engineering.jpg'
+import imgProductWriting from '../assets/courses/product-writing.jpg'
+
+// Fictional prototype courses for this demo platform.
+// They are not real courses and not affiliated with any real organization.
+export const courses = [
   {
-    id: 'full-stack-javascript',
-    title: 'Full-Stack JavaScript in Practice',
-    category: 'Engineering',
-    level: 'Intermediate',
-    instructor: 'Aisha Bello',
-    initials: 'AB',
-    avatarClass: 'bg-anchor-action text-white',
-    starts: 'Oct 5',
-    duration: '8 weeks',
-    seatsFilled: 18,
-    seatsTotal: 25,
-  },
-  {
-    id: 'product-design-for-developers',
-    title: 'Product Design for Developers',
+    id: 1,
+    slug: 'product-strategy-in-practice',
+    title: 'Product Strategy in Practice',
     category: 'Product & Design',
-    level: 'Foundation',
-    instructor: 'Marcus Webb',
-    initials: 'MW',
-    avatarClass: 'bg-anchor-accent text-anchor-text',
-    starts: 'Sep 22',
-    duration: '6 weeks',
-    seatsFilled: 32,
-    seatsTotal: 40,
+    instructor: 'Jordan Reed',
+    instructorInitials: 'JR',
+    startDate: '2026-10-05',
+    price: '$450',
+    description:
+      'Turn product ideas into practical strategies through live workshops and guided projects.',
+    image: imgProductStrategy,
+    imageAlt:
+      'A product strategy workshop with people reviewing plans around a table.',
   },
   {
-    id: 'ai-product-foundations',
-    title: 'AI Product Foundations',
+    id: 2,
+    slug: 'applied-ai-for-product-teams',
+    title: 'Applied AI for Product Teams',
     category: 'Data & AI',
-    level: 'Beginner',
-    instructor: 'Dr. Lena Okafor',
-    initials: 'LO',
-    avatarClass: 'bg-anchor-success text-white',
-    starts: 'Oct 13',
-    duration: '6 weeks',
-    seatsFilled: 11,
-    seatsTotal: 20,
+    instructor: 'Maya Chen',
+    instructorInitials: 'MC',
+    startDate: '2026-10-19',
+    price: '$520',
+    description:
+      'Learn how modern AI tools can support research, decisions and product workflows.',
+    image: imgAppliedAi,
+    imageAlt: 'A team collaborating with laptops during a working session.',
   },
   {
-    id: 'data-storytelling',
-    title: 'Data Storytelling that Lands',
-    category: 'Data & AI',
-    level: 'Intermediate',
-    instructor: 'Priya Raman',
-    initials: 'PR',
-    avatarClass: 'bg-anchor-primary text-white',
-    starts: 'Oct 27',
-    duration: '5 weeks',
-    seatsFilled: 9,
-    seatsTotal: 16,
+    id: 3,
+    slug: 'leading-high-trust-teams',
+    title: 'Leading High-Trust Teams',
+    category: 'Leadership',
+    instructor: 'David Okoro',
+    instructorInitials: 'DO',
+    startDate: '2026-11-02',
+    price: '$400',
+    description:
+      'Build stronger teams through practical leadership frameworks and live discussion.',
+    image: imgHighTrustTeams,
+    imageAlt: 'A leader facilitating a discussion with a small team.',
+  },
+  {
+    id: 4,
+    slug: 'marketing-systems-that-scale',
+    title: 'Marketing Systems That Scale',
+    category: 'Marketing',
+    instructor: 'Amara Lewis',
+    instructorInitials: 'AL',
+    startDate: '2026-11-16',
+    price: '$425',
+    description:
+      'Develop repeatable marketing systems through real-world case studies and projects.',
+    image: imgMarketingSystems,
+    imageAlt: 'Professionals collaborating on a marketing project.',
+  },
+  {
+    id: 5,
+    slug: 'modern-frontend-engineering',
+    title: 'Modern Frontend Engineering',
+    category: 'Engineering',
+    instructor: 'Ethan Cole',
+    instructorInitials: 'EC',
+    startDate: '2026-12-01',
+    price: '$550',
+    description:
+      'Build stronger frontend systems with practical engineering patterns and team workflows.',
+    image: imgFrontendEngineering,
+    imageAlt: 'A screen showing modern web application code.',
+  },
+  {
+    id: 6,
+    slug: 'writing-for-product-and-business',
+    title: 'Writing for Product and Business',
+    category: 'Writing',
+    instructor: 'Nina Brooks',
+    instructorInitials: 'NB',
+    startDate: '2026-12-07',
+    price: '$350',
+    description:
+      'Write clearer product, marketing and business communication with expert feedback.',
+    image: imgProductWriting,
+    imageAlt: 'A notebook and pen with writing in progress.',
   },
 ]
-
-export default courses

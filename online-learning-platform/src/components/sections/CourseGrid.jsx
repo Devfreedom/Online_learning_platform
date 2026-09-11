@@ -1,5 +1,5 @@
-import courses from '../../data/courses'
-import CourseCard from '../cards/CourseCard'
+import { courses } from '../../data/courses'
+import CourseCard from '../ui/CourseCard'
 
 export default function CourseGrid() {
   return (
@@ -27,8 +27,8 @@ export default function CourseGrid() {
           </p>
         </div>
 
-        <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {courses.map((course, index) => (
+        <ul className="mt-12 grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+          {courses.slice(0, 4).map((course, index) => (
             <li key={course.id} className={index === 3 ? 'lg:col-start-2' : ''}>
               <CourseCard course={course} />
             </li>
