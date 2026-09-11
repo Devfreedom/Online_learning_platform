@@ -1,4 +1,5 @@
 import { formatStartLabel } from '../../utils/formatDate'
+import Avatar from './Avatar'
 
 export default function CourseCard({ course, className = '' }) {
   return (
@@ -14,19 +15,14 @@ export default function CourseCard({ course, className = '' }) {
           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
         />
 
-        {/* Start date pill (restrained) */}
-        <span className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-md bg-anchor-surface/95 px-2.5 py-1 text-xs font-semibold text-anchor-text shadow-sm ring-1 ring-black/5">
-          <span className="h-1.5 w-1.5 rounded-full bg-anchor-accent" aria-hidden="true" />
-          {formatStartLabel(course.startDate)}
-        </span>
-
         {/* Instructor avatar overlapping lower edge of image */}
-        <span
-          aria-hidden="true"
-          className="absolute -bottom-6 left-4 grid h-12 w-12 place-items-center rounded-full bg-anchor-action text-sm font-bold text-white ring-4 ring-anchor-surface"
-        >
-          {course.instructorInitials}
-        </span>
+        <div className="absolute -bottom-5 left-4">
+          <Avatar
+            initials={course.instructorInitials}
+            image={course.instructorImage}
+            label={`${course.instructor}, instructor`}
+          />
+        </div>
       </div>
 
       {/* Content */}
@@ -47,8 +43,14 @@ export default function CourseCard({ course, className = '' }) {
           <span className="font-medium text-anchor-text">{course.instructor}</span>
         </p>
 
-        <div className="mt-auto flex items-center justify-between border-t border-anchor-border pt-4">
-          <span className="text-lg font-bold text-anchor-text">{course.price}</span>
+        <div className="mt-auto flex items-end justify-between gap-4 border-t border-anchor-border pt-4">
+          <div>
+            <p className="inline-flex items-center gap-1.5 text-xs font-semibold text-anchor-text">
+              <span className="h-1.5 w-1.5 rounded-full bg-anchor-accent" aria-hidden="true" />
+              {formatStartLabel(course.startDate)}
+            </p>
+            <p className="mt-1 text-lg font-bold text-anchor-text">{course.price}</p>
+          </div>
           <a
             href="#"
             className="text-sm font-semibold text-anchor-action underline-offset-4 transition-colors hover:text-anchor-action-hover hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action"
