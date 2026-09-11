@@ -2,6 +2,9 @@ import Header from './components/layout/Header'
 import Hero from './components/sections/Hero'
 import CategoryBrowse from './components/sections/CategoryBrowse'
 import CourseGrid from './components/sections/CourseGrid'
+import HowCohortsWork from './components/sections/HowCohortsWork'
+import InstructorSpotlight from './components/sections/InstructorSpotlight'
+import Testimonials from './components/sections/Testimonials'
 
 function App() {
   return (
@@ -11,6 +14,9 @@ function App() {
         <Hero />
         <CategoryBrowse />
         <CourseGrid />
+        <HowCohortsWork />
+        <InstructorSpotlight />
+        <Testimonials />
       </main>
     </>
   )
