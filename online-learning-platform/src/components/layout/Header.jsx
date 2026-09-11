@@ -8,10 +8,13 @@ const NAV_LINKS = [
 ]
 
 function MobileMenu({ open }) {
-  if (!open) return null
-
   return (
-    <div id="mobile-menu" className="border-t border-white/10 bg-anchor-primary lg:hidden">
+    <div
+      id="mobile-menu"
+      className={`${
+        open ? '' : 'hidden '
+      }border-t border-white/10 bg-anchor-primary lg:hidden`}
+    >
       <nav className="mx-auto max-w-7xl space-y-1 px-4 pt-3 pb-4 sm:px-6">
         {NAV_LINKS.map((link) => (
           <a
