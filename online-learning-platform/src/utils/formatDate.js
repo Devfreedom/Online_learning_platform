@@ -13,3 +13,13 @@ export function formatDate(isoDate) {
 export function formatStartLabel(isoDate) {
   return `Starts ${formatDate(isoDate)}`
 }
+
+const monthDayFormatter = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  day: 'numeric',
+})
+
+export function formatMonthDay(isoDate) {
+  const [year, month, day] = isoDate.split('-').map(Number)
+  return monthDayFormatter.format(new Date(year, month - 1, day))
+}
