@@ -22,6 +22,7 @@ function StarRating() {
 }
 
 export default function Hero() {
+  const { isAuthenticated } = useAuth()
   return (
     <section className="relative overflow-hidden bg-[#0b1220] text-white">
       {/* Restrained single glow */}
@@ -60,12 +61,21 @@ export default function Hero() {
               >
                 Explore Courses
               </a>
-              <a
-                href="#how-it-works"
-                className="rounded-lg border border-white/15 bg-transparent px-6 py-3 text-sm font-semibold text-white/90 transition-colors hover:border-white/30 hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70"
-              >
-                How It Works
-              </a>
+              {isAuthenticated ? (
+                <Link
+                  to="/dashboard"
+                  className="rounded-lg border border-white/15 bg-transparent px-6 py-3 text-sm font-semibold text-white/90 transition-colors hover:border-white/30 hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70"
+                >
+                  Go to dashboard
+                </Link>
+              ) : (
+                <a
+                  href="#how-it-works"
+                  className="rounded-lg border border-white/15 bg-transparent px-6 py-3 text-sm font-semibold text-white/90 transition-colors hover:border-white/30 hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70"
+                >
+                  How It Works
+                </a>
+              )}
             </div>
 
             {/* Product characteristics */}
