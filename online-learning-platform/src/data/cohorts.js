@@ -8,10 +8,6 @@ function course(slug) {
   return courses.find((item) => item.slug === slug)
 }
 
-function instructor(id) {
-  return instructors.find((item) => item.id === id)
-}
-
 export const learnerCohorts = [
   {
     id: 'cohort-001',
