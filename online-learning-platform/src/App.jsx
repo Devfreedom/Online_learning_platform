@@ -22,6 +22,10 @@ import ForgotPassword from './pages/ForgotPassword'
 import Dashboard from './pages/app/Dashboard'
 import MyCohorts from './pages/app/MyCohorts'
 import Learn from './pages/app/Learn'
+import Assignments from './pages/app/Assignments'
+import Progress from './pages/app/Progress'
+import Calendar from './pages/app/Calendar'
+import Certificates from './pages/app/Certificates'
 import Placeholder from './pages/app/Placeholder'
 
 function ScrollToTop() {
@@ -65,42 +69,10 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/my-cohorts" element={<MyCohorts />} />
               <Route path="/learn/:slug" element={<Learn />} />
-              <Route
-                path="/assignments"
-                element={
-                  <Placeholder
-                    title="Assignments"
-                    description="Review and submit your cohort assignments here."
-                  />
-                }
-              />
-              <Route
-                path="/progress"
-                element={
-                  <Placeholder
-                    title="Progress"
-                    description="Track your progress across every cohort."
-                  />
-                }
-              />
-              <Route
-                path="/calendar"
-                element={
-                  <Placeholder
-                    title="Calendar"
-                    description="Live sessions and deadlines in one schedule."
-                  />
-                }
-              />
-              <Route
-                path="/certificates"
-                element={
-                  <Placeholder
-                    title="Certificates"
-                    description="Your earned certificates will appear here."
-                  />
-                }
-              />
+              <Route path="/assignments" element={<Assignments />} />
+              <Route path="/progress" element={<Progress />} />
+              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/certificates" element={<Certificates />} />
               <Route
                 path="/quiz-history"
                 element={
