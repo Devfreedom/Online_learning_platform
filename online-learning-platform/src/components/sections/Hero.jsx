@@ -1,3 +1,5 @@
+import { Link } from 'react-router'
+import { useAuth } from '../../hooks/useAuth'
 import imgStudents from '../../assets/hero/students-collab.jpg'
 import imgInstructor from '../../assets/hero/instructor.jpg'
 
