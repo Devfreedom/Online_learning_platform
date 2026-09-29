@@ -60,15 +60,9 @@ export const cohortDetails = learnerCohorts.map((cohort) => {
     image: base.image,
     imageAlt: base.imageAlt,
     startDate: base.startDate,
-    duration: base.slug ? undefined : undefined,
     instructor: base.instructor,
-    instructorId: instructorIdFor(base.instructor),
   }
 })
-
-function instructorIdFor(name) {
-  return instructors.find((item) => item.name === name)?.id ?? null
-}
 
 export const dashboardStats = [
   { id: 'active-cohorts', label: 'Active cohorts', value: '2' },
