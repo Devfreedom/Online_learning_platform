@@ -20,15 +20,22 @@ const ROLE_OPTIONS = [
   { role: 'administrator', email: 'admin@example.com' },
 ]
 
+function roleForEmail(email) {
+  const match = ROLE_OPTIONS.find(
+    (option) => option.email.toLowerCase() === email?.trim().toLowerCase(),
+  )
+  return match?.role ?? 'learner'
+}
+
 export default function Login() {
   const navigate = useNavigate()
   const location = useLocation()
   const { login } = useAuth()
 
-  const [role, setRole] = useState('learner')
   const [email, setEmail] = useState(
     () => localStorage.getItem(REMEMBER_KEY) ?? '',
   )
+  const [role, setRole] = useState(() => roleForEmail(localStorage.getItem(REMEMBER_KEY)))
   const [password, setPassword] = useState('')
   const [remember, setRemember] = useState(
     () => localStorage.getItem(REMEMBER_KEY) !== null,

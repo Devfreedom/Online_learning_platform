@@ -7,7 +7,7 @@ import {
   TextField,
 } from '../components/auth/AuthFields'
 import { useAuth } from '../hooks/useAuth'
-import { AVATAR_COLORS, ROLE_LABELS } from '../utils/auth'
+import { AVATAR_COLORS } from '../utils/auth'
 import { showToast } from '../utils/toast'
 import { passwordStrength, validateIdentityStep } from '../utils/validateAuth'
 

@@ -1,4 +1,4 @@
-import { createContext, useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import {
   clearStoredUser,
   createUserFromSignup,
@@ -6,8 +6,7 @@ import {
   loadStoredUser,
   saveStoredUser,
 } from '../utils/auth'
-
-export const AuthContext = createContext(null)
+import { AuthContext } from './authContext'
 
 export function AuthProvider({ children }) {
   const [state, setState] = useState(() => {

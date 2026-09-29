@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router'
+import { Link, NavLink, Outlet, useNavigate } from 'react-router'
 import { useAuth } from '../../hooks/useAuth'
 import { showToast } from '../../utils/toast'
 
@@ -143,12 +143,7 @@ function SidebarContent({ onNavigate }) {
 
 export default function LearnerShell() {
   const [drawerOpen, setDrawerOpen] = useState(false)
-  const { pathname } = useLocation()
   const closeButtonRef = useRef(null)
-
-  useEffect(() => {
-    setDrawerOpen(false)
-  }, [pathname])
 
   useEffect(() => {
     if (!drawerOpen) return
