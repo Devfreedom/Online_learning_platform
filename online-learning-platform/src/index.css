@@ -6,25 +6,25 @@
     Roboto, "Helvetica Neue", Arial, sans-serif;
 
   /* Core brand */
-  --color-anchor-primary: #172554;
-  --color-anchor-action: #4f46e5;
-  --color-anchor-action-hover: #4338ca;
+  --color-anchor-primary: #121836;
+  --color-anchor-action: #7b5bfe;
+  --color-anchor-action-hover: #6c5bff;
   --color-anchor-accent: #f59e0b;
 
   /* Surfaces */
-  --color-anchor-bg: #f8fafc;
+  --color-anchor-bg: #f7f4ef;
   --color-anchor-surface: #ffffff;
 
   /* Text */
-  --color-anchor-text: #0f172a;
-  --color-anchor-text-muted: #64748b;
+  --color-anchor-text: #1a1a1a;
+  --color-anchor-text-muted: #6b7280;
 
   /* Structure */
-  --color-anchor-border: #e2e8f0;
+  --color-anchor-border: #e2dcd3;
 
   /* Status */
   --color-anchor-success: #10b981;
-  --color-anchor-error: #ef4444;
+  --color-anchor-error: #e53e3e;
 }
 
 @layer base {

@@ -24,8 +24,8 @@ export default function Hero() {
     <section className="relative overflow-hidden bg-[#0b1220] text-white">
       {/* Restrained single glow */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,var(--color-anchor-primary)_0%,#101b36_45%,#0b1220_100%)]" />
-        <div className="absolute -top-32 right-[-8%] h-[440px] w-[580px] rounded-full bg-[radial-gradient(closest-side,rgba(79,70,229,0.28),transparent_70%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,var(--color-anchor-primary)_0%,#0e1230_45%,#0a0d24_100%)]" />
+        <div className="absolute -top-32 right-[-8%] h-[440px] w-[580px] rounded-full bg-[radial-gradient(closest-side,rgba(123,91,254,0.30),transparent_70%)]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
