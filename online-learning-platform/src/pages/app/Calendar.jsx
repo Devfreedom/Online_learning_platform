@@ -105,6 +105,7 @@ export default function Calendar() {
                 type="button"
                 onClick={() => shiftMonth(-1)}
                 aria-label="Previous month"
+                title="Previous month"
                 className="grid h-9 w-9 place-items-center rounded-lg border border-anchor-border text-anchor-text transition-colors hover:border-anchor-action/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action"
               >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true">
@@ -115,6 +116,7 @@ export default function Calendar() {
                 type="button"
                 onClick={() => shiftMonth(1)}
                 aria-label="Next month"
+                title="Next month"
                 className="grid h-9 w-9 place-items-center rounded-lg border border-anchor-border text-anchor-text transition-colors hover:border-anchor-action/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action"
               >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true">
@@ -122,6 +124,23 @@ export default function Calendar() {
                 </svg>
               </button>
             </div>
+          </div>
+          <div className="mt-2 flex gap-2 text-sm sm:hidden">
+            <button
+              type="button"
+              onClick={() => shiftMonth(-1)}
+              className="flex-1 rounded-lg border border-anchor-border px-4 py-2 font-semibold text-anchor-text"
+            >
+              Previous month
+            </button>
+            <button
+              type="button"
+              onClick={() => shiftMonth(1)}
+              className="flex-1 rounded-lg border border-anchor-border px-4 py-2 font-semibold text-anchor-text"
+            >
+              Next month
+            </button>
+          </div>
           </div>
 
           <div className="mt-4 grid grid-cols-7 gap-1" role="row">
