@@ -6,7 +6,7 @@ import { flattenLessons, getCurriculum } from '../../data/lessons'
 import { sessionsByCourse } from '../../data/sessions'
 import { useAuth } from '../../hooks/useAuth'
 import { formatDate } from '../../utils/formatDate'
-import { completedLessonIds, getCourseProgress, markLessonComplete } from '../../utils/learningStore'
+import { getCourseProgress, markLessonComplete } from '../../utils/learningStore'
 import { showToast } from '../../utils/toast'
 
 function CurriculumItem({ lessonItem, state, onSelect }) {
@@ -136,9 +136,9 @@ export default function Learn() {
       showToast('Lesson already completed.', 'info')
       return
     }
-    const nextCompleted = markLessonComplete(slug, active.id, user?.id)
-    setCompleted(nextCompleted)
-    showToast('Lesson completed. Next lesson unlocked.')
+    markLessonComplete(slug, active.id, user?.id)
+    setCompleted((prev) => [...new Set([...prev, active.id])])
+    showToast('Lesson completed.')
     if (next) setActiveId(next.id)
   }
 
