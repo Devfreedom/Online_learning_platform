@@ -85,7 +85,8 @@ function DetailView({ assignment, state, submittedOn, onBack, onSubmit }) {
       <header className="rounded-xl border border-anchor-border bg-anchor-surface p-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <p className="text-sm text-anchor-text-muted">
-            {assignment.cohort} · Due {formatDate(assignment.dueDate)}
+            {assignment.cohort} · Instructor {instructorFor(assignment)} · Due{' '}
+            {formatDate(assignment.dueDate)}
           </p>
           <StatusChip state={state} />
         </div>
@@ -159,11 +160,11 @@ function DetailView({ assignment, state, submittedOn, onBack, onSubmit }) {
 
       {state === 'submitted' && (
         <section className="rounded-xl border border-anchor-accent/40 bg-anchor-accent/5 p-6">
-          <h2 className="font-semibold text-anchor-text">Submitted for review</h2>
+          <h2 className="font-semibold text-anchor-text">Submitted</h2>
           <p className="mt-1 text-sm text-anchor-text-muted">
-            {assignment.submittedDate
-              ? `Submitted ${formatDate(assignment.submittedDate)}. Your instructor will review it before the next live session.`
-              : 'Submitted. Your instructor will review it before the next live session.'}
+            {submittedOn
+              ? `Submitted on ${formatDate(submittedOn)}. Awaiting instructor feedback.`
+              : 'Submitted. Awaiting instructor feedback.'}
           </p>
         </section>
       )}
