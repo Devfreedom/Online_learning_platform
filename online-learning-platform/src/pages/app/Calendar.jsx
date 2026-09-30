@@ -50,9 +50,17 @@ function toISO(year, month, day) {
   return `${year}-${pad(month + 1)}-${pad(day)}`
 }
 
+function todayParts() {
+  const now = new Date()
+  return {
+    view: { year: now.getFullYear(), month: now.getMonth() },
+    iso: toISO(now.getFullYear(), now.getMonth(), now.getDate()),
+  }
+}
+
 export default function Calendar() {
-  const [view, setView] = useState({ year: 2026, month: 9 })
-  const [selected, setSelected] = useState('2026-10-13')
+  const [view, setView] = useState(() => todayParts().view)
+  const [selected, setSelected] = useState(() => todayParts().iso)
 
   const eventsByDate = useMemo(() => {
     const map = new Map()
@@ -100,7 +108,7 @@ export default function Calendar() {
             <h2 className="text-lg font-semibold text-anchor-text">
               {MONTH_NAMES[view.month]} {view.year}
             </h2>
-            <div className="flex gap-2">
+            <div className="flex gap-2 sm:hidden">
               <button
                 type="button"
                 onClick={() => shiftMonth(-1)}
@@ -122,6 +130,22 @@ export default function Calendar() {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true">
                   <path d="M9 6l6 6-6 6" />
                 </svg>
+              </button>
+            </div>
+            <div className="hidden gap-2 sm:flex">
+              <button
+                type="button"
+                onClick={() => shiftMonth(-1)}
+                className="rounded-lg border border-anchor-border px-4 py-2 text-sm font-semibold text-anchor-text transition-colors hover:border-anchor-action/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action"
+              >
+                Previous month
+              </button>
+              <button
+                type="button"
+                onClick={() => shiftMonth(1)}
+                className="rounded-lg border border-anchor-border px-4 py-2 text-sm font-semibold text-anchor-text transition-colors hover:border-anchor-action/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action"
+              >
+                Next month
               </button>
             </div>
           </div>
