@@ -100,8 +100,11 @@ export default function Certificates() {
 
       {certificates.length === 0 ? (
         <div className="rounded-xl border border-dashed border-anchor-border bg-anchor-surface px-6 py-16 text-center">
-          <p className="text-sm text-anchor-text-muted">
-            No certificates yet. Finish a cohort to earn your first one.
+          <p className="text-sm font-semibold text-anchor-text">
+            No certificates yet.
+          </p>
+          <p className="mx-auto mt-1 max-w-sm text-sm text-anchor-text-muted">
+            Finish a cohort to earn your first milestone.
           </p>
         </div>
       ) : (
@@ -128,6 +131,12 @@ export default function Certificates() {
                   <dt className="text-anchor-text-muted">Instructor:</dt>
                   <dd className="font-medium text-anchor-text">
                     {certificate.instructorName}
+                  </dd>
+                </div>
+                <div className="flex gap-2">
+                  <dt className="text-anchor-text-muted">Certificate ID:</dt>
+                  <dd className="font-medium text-anchor-text">
+                    {certificate.certificateId}
                   </dd>
                 </div>
               </dl>
