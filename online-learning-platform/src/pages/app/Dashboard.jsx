@@ -4,7 +4,6 @@ import { showToast } from '../../utils/toast'
 import { formatMonthDay } from '../../utils/formatDate'
 import {
   cohortDetails,
-  dashboardStats,
   learningActivity,
   learningGoal,
   nextLiveSession,
@@ -12,6 +11,11 @@ import {
   studyTime,
   upcomingAssignments,
 } from '../../data/cohorts'
+import {
+  getCourseProgress,
+  getLessonsCompletedTotal,
+  getOverallProgress,
+} from '../../utils/learningStore'
 
 const ACTIVITY_TONE = {
   0: 'bg-slate-200',
