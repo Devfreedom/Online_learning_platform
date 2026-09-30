@@ -151,7 +151,7 @@ export default function Signup() {
     password: '',
     confirmPassword: '',
     role: 'learner',
-    educationLevel: 'Undergraduate',
+    educationLevel: 'undergraduate',
     avatar: 'indigo',
     goals: [],
     guidedTour: true,
@@ -366,17 +366,17 @@ export default function Signup() {
           <div>
             <p className="text-sm font-semibold text-anchor-text">Avatar color</p>
             <div className="mt-3 flex gap-3">
-              {AVATAR_OPTIONS.map((color) => {
-                const active = form.avatar === color
+              {AVATAR_OPTIONS.map((option) => {
+                const active = form.avatar === option.id
                 return (
                   <button
-                    key={color}
+                    key={option.id}
                     type="button"
-                    aria-label={`Avatar color ${color}`}
+                    aria-label={`Avatar color ${option.label}`}
                     aria-pressed={active}
-                    onClick={() => patch({ avatar: color })}
+                    onClick={() => patch({ avatar: option.id })}
                     className={`h-9 w-9 rounded-full ring-offset-2 transition-shadow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action ${
-                      AVATAR_COLORS[color]
+                      AVATAR_COLORS[option.id]
                     } ${active ? 'ring-2 ring-anchor-text' : ''}`}
                   />
                 )
