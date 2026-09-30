@@ -1,6 +1,15 @@
 import { useMemo, useState } from 'react'
-import { assignmentDetails, SUBMITTED_STORAGE_KEY } from '../../data/cohorts'
+import { assignmentDetails } from '../../data/cohorts'
+import { courses } from '../../data/courses'
 import { formatDate } from '../../utils/formatDate'
+import {
+  loadSubmittedAssignmentDates,
+  loadSubmittedAssignmentIds,
+  saveSubmittedAssignmentDate,
+  saveSubmittedAssignmentIds,
+  todayISO,
+} from '../../utils/learningStore'
+import { useAuth } from '../../hooks/useAuth'
 import { showToast } from '../../utils/toast'
 
 const TABS = [
