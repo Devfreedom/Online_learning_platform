@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import { calendarEvents } from '../../data/cohorts'
 import { courses } from '../../data/courses'
 import { sessionsByCourse } from '../../data/sessions'
-import { formatDate } from '../../utils/formatDate'
+import { formatDate, formatLongDate } from '../../utils/formatDate'
 
 const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
@@ -210,7 +210,7 @@ export default function Calendar() {
           aria-live="polite"
           className="h-fit rounded-xl border border-anchor-border bg-anchor-surface p-5 sm:p-6"
         >
-          <h2 className="font-semibold text-anchor-text">{formatDate(selected)}</h2>
+          <h2 className="font-semibold text-anchor-text">{formatLongDate(selected)}</h2>
           {selectedEvents.length === 0 ? (
             <p className="mt-3 text-sm text-anchor-text-muted">
               No events scheduled for this day. Pick a highlighted date to see
