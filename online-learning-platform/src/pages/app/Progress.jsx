@@ -102,16 +102,20 @@ export default function Progress() {
     <div className="space-y-6">
       <header>
         <h1 className="text-2xl font-semibold tracking-tight text-anchor-text sm:text-3xl">
-          Progress
+          Your progress
         </h1>
         <p className="mt-1.5 text-anchor-text-muted">
-          How far you&apos;ve come across every cohort.
+          See how your learning is progressing across cohorts, lessons and
+          projects.
         </p>
       </header>
 
       <section className="grid gap-5 lg:grid-cols-2">
         <article className="rounded-xl border border-anchor-border bg-anchor-surface p-6">
-          <h2 className="font-semibold text-anchor-text">Overall learning progress</h2>
+          <h2 className="font-semibold text-anchor-text">Overall progress</h2>
+          <p className="mt-1 text-sm text-anchor-text-muted">
+            Overall learning progress
+          </p>
           <div className="mt-4">
             <ProgressRing percent={overall} label="Average completion across your enrolled cohorts." />
           </div>
