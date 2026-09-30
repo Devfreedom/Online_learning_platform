@@ -26,7 +26,10 @@ import Assignments from './pages/app/Assignments'
 import Progress from './pages/app/Progress'
 import Calendar from './pages/app/Calendar'
 import Certificates from './pages/app/Certificates'
-import Placeholder from './pages/app/Placeholder'
+import QuizHistory from './pages/app/QuizHistory'
+import Profile from './pages/app/Profile'
+import Settings from './pages/app/Settings'
+import { applyAppearance, loadSettings } from './utils/learningStore'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -49,6 +52,15 @@ function PublicLayout() {
 }
 
 function App() {
+  useEffect(() => {
+    try {
+      const stored = loadSettings()
+      applyAppearance(stored.appearance)
+    } catch {
+      // Ignore — default light theme applies.
+    }
+  }, [])
+
   return (
     <BrowserRouter>
       <AuthProvider>
