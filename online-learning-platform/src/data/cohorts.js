@@ -1,16 +1,13 @@
 import { courses } from './courses'
 import { instructors } from './instructors'
-import {
-  assignmentDetails,
-  upcomingAssignments,
-} from './assignments'
+import { assignmentDetails } from './assignments'
 import { certificates } from './certificates'
 import { calendarEvents, liveSessionStats, nextLiveSession, sessionsByCourse } from './sessions'
 import { SUBMITTED_STORAGE_KEY } from '../utils/learningStore'
 
 // Re-export canonical prototype data so existing pages keep working
 // while new pages import from the focused modules directly.
-export { SUBMITTED_STORAGE_KEY, assignmentDetails, upcomingAssignments }
+export { SUBMITTED_STORAGE_KEY, assignmentDetails }
 export { certificates }
 export { calendarEvents, liveSessionStats, nextLiveSession }
 

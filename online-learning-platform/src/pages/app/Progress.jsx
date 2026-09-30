@@ -4,6 +4,7 @@ import {
   cohortDetails,
   learningActivity,
   learningGoal,
+  liveSessionStats,
   studyTime,
 } from '../../data/cohorts'
 import { sessionsByCourse } from '../../data/sessions'
@@ -93,7 +94,7 @@ export default function Progress() {
   const highlights = [
     { label: 'Lessons completed', value: `${lessonsCompleted}` },
     { label: 'Assignments submitted', value: `${submittedCount}` },
-    { label: 'Live sessions attended', value: '14' },
+    { label: 'Live sessions attended', value: `${liveSessionStats.attended}` },
     { label: 'Current learning streak', value: `${streak} days` },
     { label: 'Completed cohorts', value: `${completedCohorts}` },
   ]
@@ -252,7 +253,9 @@ export default function Progress() {
           </div>
           <p className="mt-4 text-sm text-anchor-text-muted">
             Live-session participation:{' '}
-            <span className="font-semibold text-anchor-text">14 of 16 sessions</span>
+            <span className="font-semibold text-anchor-text">
+              {liveSessionStats.attended} of {liveSessionStats.total} sessions
+            </span>
           </p>
         </article>
       </section>
