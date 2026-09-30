@@ -160,7 +160,7 @@ export default function LearnerShell() {
   }, [drawerOpen])
 
   return (
-    <div className="min-h-screen bg-anchor-bg lg:flex">
+    <div className="learner-workspace min-h-screen bg-anchor-bg lg:flex">
       {/* Desktop sidebar */}
       <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-64 shrink-0 bg-anchor-primary lg:block">
         <SidebarContent />
