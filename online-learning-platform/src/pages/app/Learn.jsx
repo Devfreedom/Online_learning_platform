@@ -65,17 +65,20 @@ export default function Learn() {
   )
   const flat = useMemo(() => flattenLessons(weeks), [weeks])
 
-  const [tracked, setTracked] = useState({ slug, userId: user?.id })  const [completed, setCompleted] = useState(() =>
+  const [tracked, setTracked] = useState({ slug, userId: user?.id })
+  const [completed, setCompleted] = useState(() =>
     getCourseProgress(slug, course?.title, user?.id).completedIds,
   )
   const [activeId, setActiveId] = useState(null)
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  const [sessionDetailOpen, setSessionDetailOpen] = useState(false)
 
   if (tracked.slug !== slug || tracked.userId !== user?.id) {
     setTracked({ slug, userId: user?.id })
     setCompleted(getCourseProgress(slug, course?.title, user?.id).completedIds)
     setActiveId(null)
     setMobileNavOpen(false)
+    setSessionDetailOpen(false)
   }
 
   const completedSet = useMemo(() => new Set(completed), [completed])
@@ -105,6 +108,14 @@ export default function Learn() {
   const percent = flat.length === 0 ? 0 : Math.round((completedSet.size / flat.length) * 100)
   const session = sessionsByCourse[slug]
   const linkedAssignment = assignmentDetails.find((a) => a.id === active?.assignmentId)
+  const linkedAssignmentState = linkedAssignment
+    ? linkedAssignment.seededState === 'completed'
+      ? 'completed'
+      : loadSubmittedAssignmentIds(user?.id).includes(linkedAssignment.id) ||
+          linkedAssignment.seededState === 'submitted'
+        ? 'submitted'
+        : 'upcoming'
+    : null
 
   if (!course || !active) {
     return (
