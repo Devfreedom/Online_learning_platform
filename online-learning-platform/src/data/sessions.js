@@ -47,6 +47,8 @@ export const nextLiveSession = {
 
 // Prototype calendar events. type: session | deadline | milestone.
 export const calendarEvents = [
+  { id: 'event-015', date: '2026-09-18', title: 'Trust Audit Worksheet due', type: 'deadline', cohort: 'High-Trust Teams' },
+  { id: 'event-016', date: '2026-09-21', time: '5:00 PM', title: 'High-Trust Teams Live Session', type: 'session', cohort: 'High-Trust Teams' },
   { id: 'event-001', date: '2026-10-05', title: 'Product Strategy in Practice begins', type: 'milestone', cohort: 'Product Strategy' },
   { id: 'event-002', date: '2026-10-13', time: '6:00 PM', title: 'Product Strategy Live Session', type: 'session', cohort: 'Product Strategy' },
   { id: 'event-003', date: '2026-10-14', time: '5:30 PM', title: 'Applied AI Live Session', type: 'session', cohort: 'Applied AI' },
@@ -58,7 +60,7 @@ export const calendarEvents = [
   { id: 'event-009', date: '2026-10-27', time: '6:00 PM', title: 'Product Strategy Live Session', type: 'session', cohort: 'Product Strategy' },
   { id: 'event-010', date: '2026-10-28', time: '5:30 PM', title: 'Applied AI Live Session', type: 'session', cohort: 'Applied AI' },
   { id: 'event-011', date: '2026-10-30', title: 'Customer Interview Synthesis due', type: 'deadline', cohort: 'Product Strategy' },
-  { id: 'event-012', date: '2026-11-02', title: 'Leading High-Trust Teams begins', type: 'milestone', cohort: 'High-Trust Teams' },
+  { id: 'event-012', date: '2026-08-04', title: 'Leading High-Trust Teams begins', type: 'milestone', cohort: 'High-Trust Teams' },
   { id: 'event-013', date: '2026-11-03', time: '6:00 PM', title: 'Product Strategy Live Session', type: 'session', cohort: 'Product Strategy' },
   { id: 'event-014', date: '2026-11-16', title: 'Marketing Systems That Scale begins', type: 'milestone', cohort: 'Marketing' },
 ]
