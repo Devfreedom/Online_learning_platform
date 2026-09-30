@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
   clearStoredUser,
   createUserFromSignup,
@@ -6,6 +6,7 @@ import {
   loadStoredUser,
   saveStoredUser,
 } from '../utils/auth'
+import { applyAppearance, loadSettings } from '../utils/learningStore'
 import { AuthContext } from './authContext'
 
 export function AuthProvider({ children }) {
@@ -13,6 +14,16 @@ export function AuthProvider({ children }) {
     const stored = loadStoredUser()
     return { isAuthenticated: Boolean(stored), user: stored }
   })
+
+  // Re-apply the signed-in learner's appearance whenever the account changes
+  // (login, logout, signup) so the persisted preference survives reloads.
+  useEffect(() => {
+    try {
+      applyAppearance(loadSettings(state.user?.id).appearance)
+    } catch {
+      // Ignore — default light theme applies.
+    }
+  }, [state.user?.id])
 
   const login = useCallback((email, password) => {
     const account = findDemoAccount(email, password)
