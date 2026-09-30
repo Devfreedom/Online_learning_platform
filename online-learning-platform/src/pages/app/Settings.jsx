@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router'
 import { useAuth } from '../../hooks/useAuth'
 import {
   applyAppearance,
-  defaultSettings,
   loadSettings,
   saveSettings,
 } from '../../utils/learningStore'
@@ -46,7 +45,6 @@ function Toggle({ checked, onChange, label, description }) {
 export default function Settings() {
   const { user, logout } = useAuth()
   const navigate = useNavigate()
-  const [userKey] = useState(() => user?.id)
   const [settings, setSettings] = useState(() => loadSettings(user?.id))
   const [passwordForm, setPasswordForm] = useState({ current: '', next: '', confirm: '' })
   const [passwordError, setPasswordError] = useState('')
