@@ -3,13 +3,14 @@ import { useAuth } from '../../hooks/useAuth'
 import { showToast } from '../../utils/toast'
 import { formatMonthDay } from '../../utils/formatDate'
 import {
+  assignmentDetails,
+  calendarEvents,
   cohortDetails,
   learningActivity,
   learningGoal,
   nextLiveSession,
   prototypeInstructors,
   studyTime,
-  upcomingAssignments,
 } from '../../data/cohorts'
 import {
   getCourseProgress,
