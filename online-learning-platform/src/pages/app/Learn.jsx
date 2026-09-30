@@ -67,14 +67,14 @@ export default function Learn() {
 
   const [tracked, setTracked] = useState({ slug, userId: user?.id })
   const [completed, setCompleted] = useState(() =>
-    completedLessonIds(slug, user?.id),
+    getCourseProgress(slug, course?.title, user?.id).completedIds,
   )
   const [activeId, setActiveId] = useState(null)
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
 
   if (tracked.slug !== slug || tracked.userId !== user?.id) {
     setTracked({ slug, userId: user?.id })
-    setCompleted(completedLessonIds(slug, user?.id))
+    setCompleted(getCourseProgress(slug, course?.title, user?.id).completedIds)
     setActiveId(null)
     setMobileNavOpen(false)
   }
