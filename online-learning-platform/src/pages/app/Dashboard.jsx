@@ -82,6 +82,18 @@ function LearningGoalRing() {
 export default function Dashboard() {
   const { user } = useAuth()
   const primaryCohort = cohortDetails.find((cohort) => cohort.status === 'ongoing')
+  const primaryProgress = primaryCohort
+    ? getCourseProgress(primaryCohort.courseSlug, primaryCohort.title, user?.id)
+    : null
+  const overall = getOverallProgress(cohortDetails, user?.id)
+  const lessonsCompleted = getLessonsCompletedTotal(cohortDetails, user?.id)
+  const activeCohorts = cohortDetails.filter((c) => c.status === 'ongoing').length
+  const dashboardStats = [
+    { id: 'active-cohorts', label: 'Active cohorts', value: `${activeCohorts}` },
+    { id: 'average-progress', label: 'Average progress', value: `${overall}%` },
+    { id: 'lessons-completed', label: 'Lessons completed', value: `${lessonsCompleted}` },
+    { id: 'upcoming-sessions', label: 'Upcoming sessions', value: '3' },
+  ]
   const maxMinutes = Math.max(...studyTime.map((entry) => entry.minutes))
   const activeDays = learningActivity.filter((value) => value > 0).length
 
