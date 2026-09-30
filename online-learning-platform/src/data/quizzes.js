@@ -1,7 +1,5 @@
 // Central quiz prototype data.
-// Seeded attempts are layered with per-user localStorage overrides via learningStore.
-
-export const QUIZ_ATTEMPTS_STORAGE_KEY = 'anchorpoint-quiz-attempts-dismissed'
+// Dismissed-attempt state lives in utils/learningStore (QUIZ_DISMISSED_KEY).
 
 export const quizAttempts = [
   {

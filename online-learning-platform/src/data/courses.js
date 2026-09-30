@@ -44,7 +44,7 @@ export const courses = [
     category: 'Leadership',
     instructor: 'David Okoro',
     instructorInitials: 'DO',
-    startDate: '2026-11-02',
+    startDate: '2026-08-04',
     price: '$400',
     description:
       'Build stronger teams through practical leadership frameworks and live discussion.',

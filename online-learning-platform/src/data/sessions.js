@@ -28,7 +28,7 @@ export const sessionsByCourse = {
     courseTitle: 'Leading High-Trust Teams',
     cohort: 'High-Trust Teams',
     day: 'Monday',
-    date: '2026-11-09',
+    date: '2026-09-21',
     time: '5:00 PM',
     instructorId: 'david-okoro',
     instructorName: 'David Okoro',
