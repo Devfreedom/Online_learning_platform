@@ -164,22 +164,26 @@ export default function Dashboard() {
                 {primaryCohort.title}
               </h2>
               <p className="mt-1 text-sm text-anchor-text-muted">
-                {primaryCohort.instructor} · {primaryCohort.progress}% complete
+                {primaryCohort.instructor} · {primaryProgress?.percent ?? primaryCohort.progress}% complete ·{' '}
+                {primaryProgress?.completed ?? 0} of {primaryProgress?.total ?? 0} lessons
               </p>
               <p className="mt-3 text-sm text-anchor-text">
-                Next: <span className="font-medium">{primaryCohort.nextLesson}</span>
+                Next:{' '}
+                <span className="font-medium">
+                  {primaryProgress?.firstIncomplete?.title ?? primaryCohort.nextLesson}
+                </span>
               </p>
               <div
                 className="mt-4 h-2 w-full overflow-hidden rounded-full bg-anchor-bg"
                 role="progressbar"
-                aria-valuenow={primaryCohort.progress}
+                aria-valuenow={primaryProgress?.percent ?? primaryCohort.progress}
                 aria-valuemin="0"
                 aria-valuemax="100"
                 aria-label={`${primaryCohort.title} progress`}
               >
                 <div
                   className="h-full rounded-full bg-anchor-action"
-                  style={{ width: `${primaryCohort.progress}%` }}
+                  style={{ width: `${primaryProgress?.percent ?? primaryCohort.progress}%` }}
                 />
               </div>
               <Link

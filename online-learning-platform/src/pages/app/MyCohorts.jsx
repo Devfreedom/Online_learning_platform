@@ -3,6 +3,8 @@ import { Link } from 'react-router'
 import { cohortDetails } from '../../data/cohorts'
 import { courseDetails } from '../../data/courseDetails'
 import { formatDate, formatMonthDay } from '../../utils/formatDate'
+import { useAuth } from '../../hooks/useAuth'
+import { getCourseProgress } from '../../utils/learningStore'
 
 const TABS = [
   { id: 'all', label: 'All' },
@@ -20,9 +22,10 @@ const BAR_STYLE = {
   completed: 'bg-anchor-success',
 }
 
-function CohortCard({ cohort }) {
+function CohortCard({ cohort, userId }) {
   const details = courseDetails[cohort.courseSlug]
   const isCompleted = cohort.status === 'completed'
+  const live = getCourseProgress(cohort.courseSlug, cohort.title, userId)
   return (
     <article className="flex flex-col overflow-hidden rounded-xl border border-anchor-border bg-anchor-surface">
       <img
