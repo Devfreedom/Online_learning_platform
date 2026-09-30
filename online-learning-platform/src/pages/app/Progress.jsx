@@ -134,7 +134,7 @@ export default function Progress() {
       </section>
 
       <section aria-label="Progress highlights">
-        <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
           {highlights.map((item) => (
             <li
               key={item.label}
@@ -149,43 +149,68 @@ export default function Progress() {
 
       <section className="rounded-xl border border-anchor-border bg-anchor-surface p-6">
         <h2 className="font-semibold text-anchor-text">Cohort progress</h2>
-        <ul className="mt-4 space-y-4">
-          {cohortDetails.map((cohort) => (
-            <li key={cohort.id}>
-              <div className="flex items-center justify-between gap-3 text-sm">
-                <p className="truncate font-medium text-anchor-text">
-                  {cohort.title}
-                </p>
-                <p className="shrink-0 font-semibold text-anchor-text">
-                  {cohort.progress}%
-                </p>
-              </div>
-              <div
-                className="mt-1.5 h-2.5 w-full overflow-hidden rounded-full bg-anchor-bg"
-                role="progressbar"
-                aria-valuenow={cohort.progress}
-                aria-valuemin="0"
-                aria-valuemax="100"
-                aria-label={`${cohort.title} progress`}
-              >
+        <ul className="mt-4 space-y-5">
+          {cohortDetails.map((cohort) => {
+            const live = getCourseProgress(cohort.courseSlug, cohort.title, user?.id)
+            const session = sessionsByCourse[cohort.courseSlug]
+            return (
+              <li key={cohort.id} className="rounded-lg border border-anchor-border p-4">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <div className="min-w-0">
+                    <p className="truncate font-semibold text-anchor-text">
+                      {cohort.title}
+                    </p>
+                    <p className="mt-0.5 text-xs text-anchor-text-muted">
+                      Instructor {cohort.instructor} · {live.completed} of{' '}
+                      {live.total} lessons completed · {live.remaining}{' '}
+                      remaining
+                    </p>
+                  </div>
+                  <p className="shrink-0 text-sm font-bold text-anchor-text">
+                    {live.percent}% complete
+                  </p>
+                </div>
                 <div
-                  className={`h-full rounded-full ${
-                    cohort.status === 'completed'
-                      ? 'bg-anchor-success'
-                      : 'bg-anchor-action'
-                  }`}
-                  style={{ width: `${cohort.progress}%` }}
-                />
-              </div>
-            </li>
-          ))}
+                  className="mt-2.5 h-2.5 w-full overflow-hidden rounded-full bg-anchor-bg"
+                  role="progressbar"
+                  aria-valuenow={live.percent}
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-label={`${cohort.title} progress`}
+                >
+                  <div
+                    className={`h-full rounded-full ${
+                      cohort.status === 'completed'
+                        ? 'bg-anchor-success'
+                        : 'bg-anchor-action'
+                    }`}
+                    style={{ width: `${live.percent}%` }}
+                  />
+                </div>
+                <p className="mt-2 text-xs text-anchor-text-muted">
+                  {session
+                    ? `Next session: ${session.day} · ${formatMonthDay(session.date)} · ${session.time} · ${session.instructorName}`
+                    : 'Cohort complete'}
+                  {' · '}
+                  <Link
+                    to={`/learn/${cohort.courseSlug}`}
+                    className="font-semibold text-anchor-action underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action"
+                  >
+                    Continue learning
+                  </Link>
+                </p>
+              </li>
+            )
+          })}
         </ul>
       </section>
 
       <section className="grid gap-5 lg:grid-cols-2">
         <article className="rounded-xl border border-anchor-border bg-anchor-surface p-6">
-          <h2 className="font-semibold text-anchor-text">Weekly study time</h2>
-          <p className="mt-1 text-sm text-anchor-text-muted">Minutes per day</p>
+          <h2 className="font-semibold text-anchor-text">Study time</h2>
+          <p className="mt-1 text-sm text-anchor-text-muted">
+            {totalHours}h {totalRemainder}m this week
+          </p>
           <div className="mt-5 grid grid-cols-7 items-end gap-2">
             {studyTime.map((entry) => (
               <div key={entry.day} className="flex flex-col items-center gap-2">
@@ -206,9 +231,9 @@ export default function Progress() {
 
         <article className="rounded-xl border border-anchor-border bg-anchor-surface p-6">
           <div className="flex items-center justify-between gap-3">
-            <h2 className="font-semibold text-anchor-text">Activity streak</h2>
+            <h2 className="font-semibold text-anchor-text">Learning activity</h2>
             <p className="text-sm text-anchor-text-muted">
-              {activeDays} active days · {streak}-day streak
+              {activeDays} active days this month
             </p>
           </div>
           <div
