@@ -1,0 +1,78 @@
+// Central quiz prototype data.
+// Seeded attempts are layered with per-user localStorage overrides via learningStore.
+
+export const QUIZ_ATTEMPTS_STORAGE_KEY = 'anchorpoint-quiz-attempts-dismissed'
+
+export const quizAttempts = [
+  {
+    id: 'quiz-attempt-001',
+    quizTitle: 'Positioning Fundamentals Check',
+    courseSlug: 'product-strategy-in-practice',
+    courseTitle: 'Product Strategy in Practice',
+    cohort: 'Product Strategy',
+    attemptDate: '2026-10-08',
+    score: 85,
+    total: 100,
+    passed: true,
+    attemptNumber: 1,
+    duration: '12 min',
+    review: [
+      { question: 'What makes a positioning statement testable?', result: 'correct' },
+      { question: 'Which input matters most for discovery?', result: 'correct' },
+      { question: 'Name one pricing signal to watch.', result: 'incorrect' },
+    ],
+  },
+  {
+    id: 'quiz-attempt-002',
+    quizTitle: 'Positioning Fundamentals Check',
+    courseSlug: 'product-strategy-in-practice',
+    courseTitle: 'Product Strategy in Practice',
+    cohort: 'Product Strategy',
+    attemptDate: '2026-10-09',
+    score: 92,
+    total: 100,
+    passed: true,
+    attemptNumber: 2,
+    duration: '10 min',
+    review: [
+      { question: 'What makes a positioning statement testable?', result: 'correct' },
+      { question: 'Which input matters most for discovery?', result: 'correct' },
+      { question: 'Name one pricing signal to watch.', result: 'correct' },
+    ],
+  },
+  {
+    id: 'quiz-attempt-003',
+    quizTitle: 'Evaluating Model Outputs',
+    courseSlug: 'applied-ai-for-product-teams',
+    courseTitle: 'Applied AI for Product Teams',
+    cohort: 'Applied AI',
+    attemptDate: '2026-10-12',
+    score: 58,
+    total: 100,
+    passed: false,
+    attemptNumber: 1,
+    duration: '15 min',
+    review: [
+      { question: 'What is the first bias check in the workflow?', result: 'incorrect' },
+      { question: 'When should a human override the model?', result: 'correct' },
+      { question: 'Which metric fits summarisation quality?', result: 'incorrect' },
+    ],
+  },
+  {
+    id: 'quiz-attempt-004',
+    quizTitle: 'Trust Framework Basics',
+    courseSlug: 'leading-high-trust-teams',
+    courseTitle: 'Leading High-Trust Teams',
+    cohort: 'High-Trust Teams',
+    attemptDate: '2026-09-20',
+    score: 88,
+    total: 100,
+    passed: true,
+    attemptNumber: 1,
+    duration: '9 min',
+    review: [
+      { question: 'Which dimension covers follow-through?', result: 'correct' },
+      { question: 'What ritual builds psychological safety?', result: 'correct' },
+    ],
+  },
+]
