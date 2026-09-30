@@ -278,8 +278,12 @@ export default function Assignments() {
 
       {filtered.length === 0 ? (
         <div className="rounded-xl border border-dashed border-anchor-border bg-anchor-surface px-6 py-16 text-center">
-          <p className="text-sm text-anchor-text-muted">
-            Nothing here yet.
+          <p className="text-sm font-semibold text-anchor-text">
+            You&apos;re all caught up.
+          </p>
+          <p className="mx-auto mt-1 max-w-sm text-sm text-anchor-text-muted">
+            Nothing in this view right now. Check another tab or open a lesson
+            to keep momentum.
           </p>
         </div>
       ) : (
@@ -294,13 +298,22 @@ export default function Assignments() {
                   {assignment.title}
                 </p>
                 <p className="mt-0.5 text-xs text-anchor-text-muted">
-                  {assignment.cohort} · Due {formatDate(assignment.dueDate)} ·{' '}
-                  {assignment.points} points
+                  {assignment.cohort} · Instructor {instructorFor(assignment)} ·
+                  Due {formatDate(assignment.dueDate)} · {assignment.points}{' '}
+                  points
                 </p>
-                <div className="mt-2">
+                <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-anchor-text-muted">
+                  {assignment.overview}
+                </p>
+                <div className="mt-2 flex flex-wrap items-center gap-2">
                   <StatusChip state={assignment.state} />
+                  {assignment.state === 'submitted' && assignment.submittedOn && (
+                    <span className="text-xs font-medium text-anchor-text-muted">
+                      Submitted on {formatDate(assignment.submittedOn)}
+                    </span>
+                  )}
                   {assignment.state === 'completed' && assignment.score != null && (
-                    <span className="ml-2 text-xs font-semibold text-anchor-text-muted">
+                    <span className="text-xs font-semibold text-anchor-text-muted">
                       {assignment.score}/{assignment.points}
                     </span>
                   )}
