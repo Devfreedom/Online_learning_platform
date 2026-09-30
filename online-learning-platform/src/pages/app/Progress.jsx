@@ -188,9 +188,11 @@ export default function Progress() {
                   />
                 </div>
                 <p className="mt-2 text-xs text-anchor-text-muted">
-                  {session
-                    ? `Next session: ${session.day} · ${formatMonthDay(session.date)} · ${session.time} · ${session.instructorName}`
-                    : 'Cohort complete'}
+                  {cohort.status === 'completed'
+                    ? 'Cohort complete'
+                    : session
+                      ? `Next session: ${session.day} · ${formatMonthDay(session.date)} · ${session.time} · ${session.instructorName}`
+                      : 'No upcoming session scheduled'}
                   {' · '}
                   <Link
                     to={`/learn/${cohort.courseSlug}`}
