@@ -1,9 +1,20 @@
+import { Link } from 'react-router'
 import {
+  assignmentDetails,
   cohortDetails,
   learningActivity,
   learningGoal,
   studyTime,
 } from '../../data/cohorts'
+import { sessionsByCourse } from '../../data/sessions'
+import { formatMonthDay } from '../../utils/formatDate'
+import { useAuth } from '../../hooks/useAuth'
+import {
+  getCourseProgress,
+  getLessonsCompletedTotal,
+  getOverallProgress,
+  loadSubmittedAssignmentIds,
+} from '../../utils/learningStore'
 
 const ACTIVITY_TONE = {
   0: 'bg-slate-200',
@@ -59,19 +70,32 @@ function ProgressRing({ percent, size = 144, label }) {
 }
 
 export default function Progress() {
-  const overall = Math.round(
-    cohortDetails.reduce((sum, cohort) => sum + cohort.progress, 0) /
-      cohortDetails.length,
-  )
+  const { user } = useAuth()
+  const overall = getOverallProgress(cohortDetails, user?.id)
   const maxMinutes = Math.max(...studyTime.map((entry) => entry.minutes))
+  const totalMinutes = studyTime.reduce((sum, entry) => sum + entry.minutes, 0)
+  const totalHours = Math.floor(totalMinutes / 60)
+  const totalRemainder = totalMinutes % 60
   const activeDays = learningActivity.filter((value) => value > 0).length
   const streak = trailingStreak(learningActivity)
+  const lessonsCompleted = getLessonsCompletedTotal(cohortDetails, user?.id)
+  const submittedCount =
+    assignmentDetails.filter((a) => a.seededState !== 'upcoming').length +
+    loadSubmittedAssignmentIds(user?.id).filter((id) =>
+      assignmentDetails.some(
+        (a) => a.id === id && a.seededState === 'upcoming',
+      ),
+    ).length
+  const completedCohorts = cohortDetails.filter(
+    (cohort) => cohort.status === 'completed',
+  ).length
 
   const highlights = [
-    { label: 'Lessons completed', value: '18' },
-    { label: 'Assignments completed', value: '6' },
+    { label: 'Lessons completed', value: `${lessonsCompleted}` },
+    { label: 'Assignments submitted', value: `${submittedCount}` },
     { label: 'Live sessions attended', value: '14' },
-    { label: 'Day streak', value: `${streak}` },
+    { label: 'Current learning streak', value: `${streak} days` },
+    { label: 'Completed cohorts', value: `${completedCohorts}` },
   ]
 
   return (
