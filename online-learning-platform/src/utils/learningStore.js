@@ -216,10 +216,12 @@ export function applyAppearance(appearance) {
 }
 
 // --- Quiz dismissals (for empty-state demo) ---
+export const QUIZ_DISMISSED_KEY = 'anchorpoint-quiz-dismissed'
+
 export function loadDismissedQuizIds() {
-  return readJson('anchorpoint-quiz-dismissed', [])
+  return readJson(QUIZ_DISMISSED_KEY, [])
 }
 
 export function saveDismissedQuizIds(ids) {
-  writeJson('anchorpoint-quiz-dismissed', ids)
+  writeJson(QUIZ_DISMISSED_KEY, ids)
 }
