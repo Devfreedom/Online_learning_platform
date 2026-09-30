@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router'
 import { assignmentDetails } from '../../data/cohorts'
 import { courses } from '../../data/courses'
 import { formatDate } from '../../utils/formatDate'
@@ -281,6 +282,12 @@ export default function Assignments() {
             Nothing in this view right now. Check another tab or open a lesson
             to keep momentum.
           </p>
+          <Link
+            to="/my-cohorts"
+            className="mt-6 inline-block rounded-lg bg-anchor-action px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-anchor-action-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action"
+          >
+            Go to My Cohorts
+          </Link>
         </div>
       ) : (
         <ul className="grid gap-4">

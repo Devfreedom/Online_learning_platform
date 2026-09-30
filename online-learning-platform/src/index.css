@@ -36,10 +36,11 @@
     @apply bg-anchor-bg font-sans text-anchor-text antialiased;
   }
 
-  /* Prototype dark appearance: only remaps Anchorpoint surfaces/text.
-     Brand accents (purple action, emerald success, amber highlight, navy
-     shell) stay the same so public pages remain readable. */
-  .app-dark {
+  /* Prototype dark appearance: only remaps Anchorpoint surfaces/text inside
+     the learner workspace. Brand accents (purple action, emerald success,
+     amber highlight, navy shell) stay the same, and public pages keep the
+     default light tokens. */
+  .app-dark .learner-workspace {
     --color-anchor-bg: #0e1330;
     --color-anchor-surface: #1a2148;
     --color-anchor-text: #eef0fb;

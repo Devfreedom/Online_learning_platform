@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router'
 import { certificates, prototypeInstructors } from '../../data/cohorts'
 import { useAuth } from '../../hooks/useAuth'
 import { formatDate } from '../../utils/formatDate'
@@ -106,6 +107,12 @@ export default function Certificates() {
           <p className="mx-auto mt-1 max-w-sm text-sm text-anchor-text-muted">
             Finish a cohort to earn your first milestone.
           </p>
+          <Link
+            to="/my-cohorts"
+            className="mt-6 inline-block rounded-lg bg-anchor-action px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-anchor-action-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action"
+          >
+            Go to My Cohorts
+          </Link>
         </div>
       ) : (
         <ul className="grid gap-5 sm:grid-cols-2">
