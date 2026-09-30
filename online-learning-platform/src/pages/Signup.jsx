@@ -8,6 +8,7 @@ import {
 } from '../components/auth/AuthFields'
 import { useAuth } from '../hooks/useAuth'
 import { AVATAR_COLORS } from '../utils/auth'
+import { AVATAR_OPTIONS, EDUCATION_OPTIONS } from '../data/profileOptions'
 import { showToast } from '../utils/toast'
 import { passwordStrength, validateIdentityStep } from '../utils/validateAuth'
 
@@ -30,14 +31,6 @@ const ROLES = [
   },
 ]
 
-const EDUCATION_LEVELS = [
-  'Junior Secondary',
-  'Senior Secondary',
-  'Undergraduate',
-  'Graduate',
-  'Professional',
-]
-
 const GOALS = [
   'Build career skills',
   'Learn a new subject',
@@ -45,8 +38,6 @@ const GOALS = [
   'Build practical projects',
   'Teach others',
 ]
-
-const AVATAR_OPTIONS = ['indigo', 'emerald', 'amber', 'rose']
 
 const STRENGTH_BAR = ['bg-anchor-error', 'bg-anchor-error', 'bg-anchor-accent', 'bg-anchor-success', 'bg-anchor-success']
 
