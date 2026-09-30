@@ -320,6 +320,30 @@ export default function Learn() {
               </button>
             </div>
           </section>
+
+          <section className="rounded-xl border border-anchor-border bg-anchor-surface p-6 sm:flex sm:items-center sm:justify-between sm:gap-4">
+            <div>
+              <h3 className="text-sm font-semibold text-anchor-text">Next lesson</h3>
+              {next ? (
+                <p className="mt-1 text-sm text-anchor-text-muted">
+                  {next.title} · {next.duration}
+                  {!nextUnlocked && ' · Complete this lesson to unlock'}
+                </p>
+              ) : (
+                <p className="mt-1 text-sm text-anchor-text-muted">
+                  You&apos;ve reached the final lesson in this prototype curriculum.
+                </p>
+              )}
+            </div>
+            <button
+              type="button"
+              disabled={!next || !nextUnlocked}
+              onClick={() => next && handleSelect(next.id)}
+              className="mt-4 shrink-0 rounded-lg bg-anchor-action px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-anchor-action-hover disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action sm:mt-0"
+            >
+              Continue
+            </button>
+          </section>
         </article>
 
         {/* Cohort info */}
