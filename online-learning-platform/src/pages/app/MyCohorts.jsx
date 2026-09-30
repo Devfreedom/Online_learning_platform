@@ -171,7 +171,7 @@ export default function MyCohorts() {
         <ul className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {filtered.map((cohort) => (
             <li key={cohort.id}>
-              <CohortCard cohort={cohort} />
+              <CohortCard cohort={cohort} userId={user?.id} />
             </li>
           ))}
         </ul>
