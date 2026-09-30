@@ -6,7 +6,7 @@ import { flattenLessons, getCurriculum } from '../../data/lessons'
 import { sessionsByCourse } from '../../data/sessions'
 import { useAuth } from '../../hooks/useAuth'
 import { formatDate } from '../../utils/formatDate'
-import { getCourseProgress, markLessonComplete } from '../../utils/learningStore'
+import { getCourseProgress, loadSubmittedAssignmentIds, markLessonComplete } from '../../utils/learningStore'
 import { showToast } from '../../utils/toast'
 
 function CurriculumItem({ lessonItem, state, onSelect }) {
@@ -65,8 +65,7 @@ export default function Learn() {
   )
   const flat = useMemo(() => flattenLessons(weeks), [weeks])
 
-  const [tracked, setTracked] = useState({ slug, userId: user?.id })
-  const [completed, setCompleted] = useState(() =>
+  const [tracked, setTracked] = useState({ slug, userId: user?.id })  const [completed, setCompleted] = useState(() =>
     getCourseProgress(slug, course?.title, user?.id).completedIds,
   )
   const [activeId, setActiveId] = useState(null)
