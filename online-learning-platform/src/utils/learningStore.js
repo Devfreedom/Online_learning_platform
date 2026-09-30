@@ -1,6 +1,8 @@
 // Prototype localStorage helpers for learner state.
 // All data stays in the browser; keys are namespaced per user where useful.
 
+import { flattenLessons, getCurriculum } from '../data/lessons'
+
 function readJson(key, fallback) {
   try {
     const raw = localStorage.getItem(key)
