@@ -146,8 +146,7 @@ export default function Profile() {
             </h2>
             <p className="text-sm text-anchor-text-muted">{user.email}</p>
             <p className="mt-1 text-xs text-anchor-text-muted">
-              {EDUCATION_OPTIONS.find((o) => o.id === user.educationLevel)?.label ??
-                user.educationLevel}
+              {educationLabelFor(user.educationLevel)}
               {user.goals?.length > 0 && ` · ${user.goals.length} learning goal${user.goals.length > 1 ? 's' : ''}`}
             </p>
           </div>
@@ -362,7 +361,7 @@ export default function Profile() {
           <div className="rounded-xl border border-anchor-border bg-anchor-surface p-5">
             <p className="text-xs font-semibold uppercase tracking-wide text-anchor-text-muted">Education</p>
             <p className="mt-1 text-sm font-semibold text-anchor-text">
-              {EDUCATION_OPTIONS.find((o) => o.id === user.educationLevel)?.label ?? 'Not set'}
+              {educationLabelFor(user.educationLevel)}
             </p>
           </div>
           <div className="rounded-xl border border-anchor-border bg-anchor-surface p-5">
