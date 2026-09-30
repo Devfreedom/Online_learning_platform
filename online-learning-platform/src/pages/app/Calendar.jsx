@@ -39,6 +39,8 @@ function cohortLinkForEvent(event) {
   if (event.type === 'session' && slug) return { to: `/learn/${slug}`, label: 'View lesson' }
   return { to: '/my-cohorts', label: 'View cohort' }
 }
+
+const MONTH_NAMES = [
   'January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December',
 ]
@@ -85,7 +87,7 @@ export default function Calendar() {
           Calendar
         </h1>
         <p className="mt-1.5 text-anchor-text-muted">
-          Live sessions, deadlines and milestones in one schedule.
+          Keep track of live sessions, deadlines and cohort milestones.
         </p>
       </header>
 
