@@ -77,20 +77,22 @@ function CohortCard({ cohort, userId }) {
 
         <div className="mt-4">
           <div className="flex items-center justify-between text-xs text-anchor-text-muted">
-            <span>Progress</span>
-            <span className="font-semibold text-anchor-text">{cohort.progress}%</span>
+            <span>
+              Progress · {live.completed} of {live.total} lessons
+            </span>
+            <span className="font-semibold text-anchor-text">{live.percent}%</span>
           </div>
           <div
             className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-anchor-bg"
             role="progressbar"
-            aria-valuenow={cohort.progress}
+            aria-valuenow={live.percent}
             aria-valuemin="0"
             aria-valuemax="100"
             aria-label={`${cohort.title} progress`}
           >
             <div
               className={`h-full rounded-full ${BAR_STYLE[cohort.status]}`}
-              style={{ width: `${cohort.progress}%` }}
+              style={{ width: `${live.percent}%` }}
             />
           </div>
         </div>
@@ -107,6 +109,7 @@ function CohortCard({ cohort, userId }) {
 }
 
 export default function MyCohorts() {
+  const { user } = useAuth()
   const [tab, setTab] = useState('all')
 
   const filtered = useMemo(() => {
