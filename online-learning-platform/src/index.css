@@ -35,4 +35,15 @@
   body {
     @apply bg-anchor-bg font-sans text-anchor-text antialiased;
   }
+
+  /* Prototype dark appearance: only remaps Anchorpoint surfaces/text.
+     Brand accents (purple action, emerald success, amber highlight, navy
+     shell) stay the same so public pages remain readable. */
+  .app-dark {
+    --color-anchor-bg: #0e1330;
+    --color-anchor-surface: #1a2148;
+    --color-anchor-text: #eef0fb;
+    --color-anchor-text-muted: #a7b0cc;
+    --color-anchor-border: #2e3767;
+  }
 }

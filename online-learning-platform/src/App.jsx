@@ -85,33 +85,9 @@ function App() {
               <Route path="/progress" element={<Progress />} />
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/certificates" element={<Certificates />} />
-              <Route
-                path="/quiz-history"
-                element={
-                  <Placeholder
-                    title="Quiz History"
-                    description="Every quiz attempt and score, in one place."
-                  />
-                }
-              />
-              <Route
-                path="/profile"
-                element={
-                  <Placeholder
-                    title="Profile"
-                    description="Manage how you appear across Anchorpoint."
-                  />
-                }
-              />
-              <Route
-                path="/settings"
-                element={
-                  <Placeholder
-                    title="Settings"
-                    description="Account, learning and notification preferences."
-                  />
-                }
-              />
+              <Route path="/quiz-history" element={<QuizHistory />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/settings" element={<Settings />} />
             </Route>
           </Route>
 
