@@ -5,7 +5,7 @@ import {
   upcomingAssignments,
 } from './assignments'
 import { certificates } from './certificates'
-import { calendarEvents, nextLiveSession } from './sessions'
+import { calendarEvents, nextLiveSession, sessionsByCourse } from './sessions'
 import { SUBMITTED_STORAGE_KEY } from '../utils/learningStore'
 
 // Re-export canonical prototype data so existing pages keep working
