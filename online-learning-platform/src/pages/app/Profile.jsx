@@ -132,7 +132,7 @@ export default function Profile() {
         {!editing && (
           <button
             type="button"
-            onClick={() => setEditing(true)}
+            onClick={startEditing}
             className="rounded-lg bg-anchor-action px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-anchor-action-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action"
           >
             Edit profile

@@ -46,15 +46,17 @@ function Toggle({ checked, onChange, label, description }) {
 export default function Settings() {
   const { user, logout } = useAuth()
   const navigate = useNavigate()
-  const [settings, setSettings] = useState(defaultSettings)
+  const [userKey] = useState(() => user?.id)
+  const [settings, setSettings] = useState(() => loadSettings(user?.id))
   const [passwordForm, setPasswordForm] = useState({ current: '', next: '', confirm: '' })
   const [passwordError, setPasswordError] = useState('')
 
   useEffect(() => {
-    const loaded = loadSettings(user?.id)
-    setSettings(loaded)
-    applyAppearance(loaded.appearance)
-  }, [user?.id])
+    applyAppearance(settings.appearance)
+  }, [settings.appearance])
+
+  // Keep the lint-safe pattern: settings load once per signed-in user.
+  // userKey preserves the initial user scope without syncing state in an effect.
 
   const update = (patch) => {
     const next = { ...settings, ...patch }
