@@ -53,9 +53,6 @@ export default function Settings() {
     applyAppearance(settings.appearance)
   }, [settings.appearance])
 
-  // Keep the lint-safe pattern: settings load once per signed-in user.
-  // userKey preserves the initial user scope without syncing state in an effect.
-
   const update = (patch) => {
     const next = { ...settings, ...patch }
     setSettings(next)
