@@ -24,22 +24,17 @@ const STATE_STYLE = {
   completed: 'bg-anchor-success/10 text-anchor-success',
 }
 
+function instructorFor(assignment) {
+  const course = courses.find((item) => item.slug === assignment.courseSlug)
+  return course?.instructor ?? 'Instructor'
+}
+
 function loadSubmittedIds() {
-  try {
-    const raw = localStorage.getItem(SUBMITTED_STORAGE_KEY)
-    const parsed = raw ? JSON.parse(raw) : []
-    return Array.isArray(parsed) ? parsed : []
-  } catch {
-    return []
-  }
+  return loadSubmittedAssignmentIds()
 }
 
 function saveSubmittedIds(ids) {
-  try {
-    localStorage.setItem(SUBMITTED_STORAGE_KEY, JSON.stringify(ids))
-  } catch {
-    // Ignore storage failures — submission still reflected in this session.
-  }
+  saveSubmittedAssignmentIds(undefined, ids)
 }
 
 function effectiveState(assignment, submittedIds) {
@@ -48,6 +43,11 @@ function effectiveState(assignment, submittedIds) {
     return 'submitted'
   }
   return 'upcoming'
+}
+
+function submittedOnFor(assignment, submittedDates) {
+  if (assignment.submittedDate) return assignment.submittedDate
+  return submittedDates[assignment.id] ?? null
 }
 
 function StatusChip({ state }) {
@@ -60,7 +60,7 @@ function StatusChip({ state }) {
   )
 }
 
-function DetailView({ assignment, state, onBack, onSubmit }) {
+function DetailView({ assignment, state, submittedOn, onBack, onSubmit }) {
   const [draft, setDraft] = useState('')
   const [error, setError] = useState('')
 
