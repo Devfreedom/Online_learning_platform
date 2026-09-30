@@ -217,7 +217,7 @@ export default function Learn() {
         </button>
       </header>
 
-      <div className="grid gap-5 lg:grid-cols-[280px_minmax(0,1fr)_260px]">
+      <div className="grid gap-5 lg:grid-cols-[260px_minmax(0,1fr)] xl:grid-cols-[280px_minmax(0,1fr)_260px]">
         {/* Left curriculum — desktop */}
         <aside className="hidden rounded-xl border border-anchor-border bg-anchor-surface p-4 lg:block">
           {curriculum}
@@ -347,7 +347,7 @@ export default function Learn() {
         </article>
 
         {/* Cohort info */}
-        <aside className="space-y-4">
+        <aside className="space-y-4 lg:col-span-2 xl:col-span-1">
           <section className="rounded-xl border border-anchor-border bg-anchor-surface p-5">
             <h3 className="text-sm font-semibold text-anchor-text">Next live session</h3>
             {session ? (
