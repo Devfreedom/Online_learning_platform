@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useAuth } from '../../hooks/useAuth'
 import { AVATAR_COLORS, initialsFor } from '../../utils/auth'
 import { showToast } from '../../utils/toast'
@@ -29,32 +29,29 @@ const GOAL_SUGGESTIONS = [
 const inputClass =
   'mt-1.5 block w-full rounded-lg border border-anchor-border bg-anchor-surface px-4 py-2.5 text-sm text-anchor-text placeholder:text-anchor-text-muted/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action'
 
+function buildForm(source) {
+  return {
+    firstName: source?.firstName ?? '',
+    lastName: source?.lastName ?? '',
+    email: source?.email ?? '',
+    educationLevel: source?.educationLevel ?? 'undergraduate',
+    goals: Array.isArray(source?.goals) ? source.goals : [],
+    avatar: source?.avatar ?? 'indigo',
+    goalInput: '',
+  }
+}
+
 export default function Profile() {
   const { user, updateUser } = useAuth()
   const [editing, setEditing] = useState(false)
-  const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    educationLevel: 'undergraduate',
-    goals: [],
-    avatar: 'indigo',
-    goalInput: '',
-  })
+  const [form, setForm] = useState(() => buildForm(user))
   const [errors, setErrors] = useState({})
 
-  useEffect(() => {
-    if (!user) return
-    setForm({
-      firstName: user.firstName ?? '',
-      lastName: user.lastName ?? '',
-      email: user.email ?? '',
-      educationLevel: user.educationLevel ?? 'undergraduate',
-      goals: Array.isArray(user.goals) ? user.goals : [],
-      avatar: user.avatar ?? 'indigo',
-      goalInput: '',
-    })
-  }, [user, editing])
+  const startEditing = () => {
+    setForm(buildForm(user))
+    setErrors({})
+    setEditing(true)
+  }
 
   if (!user) {
     return (
