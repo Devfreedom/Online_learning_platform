@@ -89,11 +89,23 @@ export default function Dashboard() {
   const overall = getOverallProgress(cohortDetails, user?.id)
   const lessonsCompleted = getLessonsCompletedTotal(cohortDetails, user?.id)
   const activeCohorts = cohortDetails.filter((c) => c.status === 'ongoing').length
+  const upcomingAssignments = assignmentDetails
+    .filter((assignment) => assignment.seededState === 'upcoming')
+    .map((assignment) => ({
+      id: assignment.id,
+      title: assignment.title,
+      cohort: assignment.cohort,
+      dueDate: assignment.dueDate,
+      status: assignment.baseStatus,
+    }))
+  const upcomingSessionCount = calendarEvents.filter(
+    (event) => event.type === 'session',
+  ).length
   const dashboardStats = [
     { id: 'active-cohorts', label: 'Active cohorts', value: `${activeCohorts}` },
     { id: 'average-progress', label: 'Average progress', value: `${overall}%` },
     { id: 'lessons-completed', label: 'Lessons completed', value: `${lessonsCompleted}` },
-    { id: 'upcoming-sessions', label: 'Upcoming sessions', value: '3' },
+    { id: 'upcoming-sessions', label: 'Upcoming sessions', value: `${upcomingSessionCount}` },
   ]
   const maxMinutes = Math.max(...studyTime.map((entry) => entry.minutes))
   const activeDays = learningActivity.filter((value) => value > 0).length
@@ -165,26 +177,26 @@ export default function Dashboard() {
                 {primaryCohort.title}
               </h2>
               <p className="mt-1 text-sm text-anchor-text-muted">
-                {primaryCohort.instructor} · {primaryProgress?.percent ?? primaryCohort.progress}% complete ·{' '}
-                {primaryProgress?.completed ?? 0} of {primaryProgress?.total ?? 0} lessons
+                {primaryCohort.instructor} · {primaryProgress.percent}% complete ·{' '}
+                {primaryProgress.completed} of {primaryProgress.total} lessons
               </p>
               <p className="mt-3 text-sm text-anchor-text">
                 Next:{' '}
                 <span className="font-medium">
-                  {primaryProgress?.firstIncomplete?.title ?? primaryCohort.nextLesson}
+                  {primaryProgress.firstIncomplete?.title ?? 'Curriculum complete'}
                 </span>
               </p>
               <div
                 className="mt-4 h-2 w-full overflow-hidden rounded-full bg-anchor-bg"
                 role="progressbar"
-                aria-valuenow={primaryProgress?.percent ?? primaryCohort.progress}
+                aria-valuenow={primaryProgress.percent}
                 aria-valuemin="0"
                 aria-valuemax="100"
                 aria-label={`${primaryCohort.title} progress`}
               >
                 <div
                   className="h-full rounded-full bg-anchor-action"
-                  style={{ width: `${primaryProgress?.percent ?? primaryCohort.progress}%` }}
+                  style={{ width: `${primaryProgress.percent}%` }}
                 />
               </div>
               <Link

@@ -1,29 +1,5 @@
 // Canonical assignment data. cohorts.js re-exports these for backward compat.
 
-export const upcomingAssignments = [
-  {
-    id: 'assignment-001',
-    title: 'Competitive Analysis Brief',
-    cohort: 'Product Strategy',
-    dueDate: '2026-10-16',
-    status: 'In progress',
-  },
-  {
-    id: 'assignment-002',
-    title: 'AI Workflow Prototype',
-    cohort: 'Applied AI',
-    dueDate: '2026-10-21',
-    status: 'Not started',
-  },
-  {
-    id: 'assignment-003',
-    title: 'Customer Interview Synthesis',
-    cohort: 'Product Strategy',
-    dueDate: '2026-10-30',
-    status: 'Not started',
-  },
-]
-
 // Full assignment briefs. `seededState` gives the prototype starting point;
 // learner submissions are layered on top from localStorage.
 export const assignmentDetails = [
