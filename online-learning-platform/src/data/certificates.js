@@ -3,6 +3,7 @@
 export const certificates = [
   {
     id: 'certificate-001',
+    certificateId: 'AP-2026-HT-001',
     cohortId: 'cohort-003',
     courseTitle: 'Leading High-Trust Teams',
     completionDate: '2026-09-25',

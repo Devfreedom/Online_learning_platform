@@ -214,30 +214,40 @@ export default function Calendar() {
           <h2 className="font-semibold text-anchor-text">{formatDate(selected)}</h2>
           {selectedEvents.length === 0 ? (
             <p className="mt-3 text-sm text-anchor-text-muted">
-              Nothing scheduled on this day. Pick a highlighted date to see
+              No events scheduled for this day. Pick a highlighted date to see
               sessions, deadlines and milestones.
             </p>
           ) : (
             <ul className="mt-4 space-y-3">
-              {selectedEvents.map((event) => (
-                <li
-                  key={event.id}
-                  className="rounded-lg border border-anchor-border px-4 py-3"
-                >
-                  <span
-                    className={`inline-block rounded-full px-2 py-0.5 text-xs font-semibold text-white ${TYPE_STYLE[event.type]}`}
+              {selectedEvents.map((event) => {
+                const instructor = instructorForEvent(event)
+                const link = cohortLinkForEvent(event)
+                return (
+                  <li
+                    key={event.id}
+                    className="rounded-lg border border-anchor-border px-4 py-3"
                   >
-                    {TYPE_LABEL[event.type]}
-                  </span>
-                  <p className="mt-2 text-sm font-semibold text-anchor-text">
-                    {event.title}
-                  </p>
-                  <p className="mt-0.5 text-xs text-anchor-text-muted">
-                    {event.cohort}
-                    {event.time ? ` · ${event.time}` : ''}
-                  </p>
-                </li>
-              ))}
+                    <span
+                      className={`inline-block rounded-full px-2 py-0.5 text-xs font-semibold text-white ${TYPE_STYLE[event.type]}`}
+                    >
+                      {TYPE_LABEL[event.type]}
+                    </span>
+                    <p className="mt-2 text-sm font-semibold text-anchor-text">
+                      {event.time ? `${event.time} — ${event.title}` : event.title}
+                    </p>
+                    <p className="mt-0.5 text-xs text-anchor-text-muted">
+                      {event.cohort}
+                      {instructor ? ` · Instructor ${instructor}` : ''}
+                    </p>
+                    <Link
+                      to={link.to}
+                      className="mt-2 inline-block text-xs font-semibold text-anchor-action underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                )
+              })}
             </ul>
           )}
         </section>
