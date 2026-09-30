@@ -1,22 +1,13 @@
 import { useState } from 'react'
 import { useAuth } from '../../hooks/useAuth'
+import {
+  AVATAR_OPTIONS,
+  EDUCATION_OPTIONS,
+  educationLabelFor,
+  normalizeEducationLevel,
+} from '../../data/profileOptions'
 import { AVATAR_COLORS, initialsFor } from '../../utils/auth'
 import { showToast } from '../../utils/toast'
-
-const EDUCATION_OPTIONS = [
-  { id: 'secondary', label: 'Secondary school' },
-  { id: 'undergraduate', label: 'Undergraduate' },
-  { id: 'graduate', label: 'Graduate' },
-  { id: 'professional', label: 'Professional / continuing' },
-  { id: 'other', label: 'Other' },
-]
-
-const AVATAR_OPTIONS = [
-  { id: 'indigo', label: 'Purple' },
-  { id: 'emerald', label: 'Emerald' },
-  { id: 'amber', label: 'Amber' },
-  { id: 'rose', label: 'Rose' },
-]
 
 const GOAL_SUGGESTIONS = [
   'Build career skills',

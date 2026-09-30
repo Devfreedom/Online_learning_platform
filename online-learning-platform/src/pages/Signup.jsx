@@ -320,21 +320,21 @@ export default function Signup() {
                 Where are you learning right now?
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
-                {EDUCATION_LEVELS.map((level) => {
-                  const active = form.educationLevel === level
+                {EDUCATION_OPTIONS.map((level) => {
+                  const active = form.educationLevel === level.id
                   return (
                     <button
-                      key={level}
+                      key={level.id}
                       type="button"
                       aria-pressed={active}
-                      onClick={() => patch({ educationLevel: level })}
+                      onClick={() => patch({ educationLevel: level.id })}
                       className={`rounded-lg border px-3 py-1.5 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action ${
                         active
                           ? 'border-anchor-action bg-anchor-action text-white'
                           : 'border-anchor-border bg-anchor-surface text-anchor-text hover:border-anchor-action/40'
                       }`}
                     >
-                      {level}
+                      {level.label}
                     </button>
                   )
                 })}
