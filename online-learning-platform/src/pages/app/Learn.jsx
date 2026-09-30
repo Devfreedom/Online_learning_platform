@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router'
 import { assignmentDetails } from '../../data/assignments'
 import { courses } from '../../data/courses'
@@ -65,17 +65,19 @@ export default function Learn() {
   )
   const flat = useMemo(() => flattenLessons(weeks), [weeks])
 
+  const [tracked, setTracked] = useState({ slug, userId: user?.id })
   const [completed, setCompleted] = useState(() =>
     completedLessonIds(slug, user?.id),
   )
   const [activeId, setActiveId] = useState(null)
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
 
-  useEffect(() => {
+  if (tracked.slug !== slug || tracked.userId !== user?.id) {
+    setTracked({ slug, userId: user?.id })
     setCompleted(completedLessonIds(slug, user?.id))
     setActiveId(null)
     setMobileNavOpen(false)
-  }, [slug, user?.id])
+  }
 
   const completedSet = useMemo(() => new Set(completed), [completed])
 
