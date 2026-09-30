@@ -37,13 +37,16 @@ export const sessionsByCourse = {
 }
 
 export const nextLiveSession = {
-  cohortId: 'cohort-001',
-  title: 'Product Strategy in Practice',
-  day: 'Tuesday',
-  date: '2026-10-13',
-  time: '6:00 PM',
-  instructorId: 'jordan-reed',
+  cohortId: sessionsByCourse['product-strategy-in-practice'].cohortId,
+  title: sessionsByCourse['product-strategy-in-practice'].courseTitle,
+  day: sessionsByCourse['product-strategy-in-practice'].day,
+  date: sessionsByCourse['product-strategy-in-practice'].date,
+  time: sessionsByCourse['product-strategy-in-practice'].time,
+  instructorId: sessionsByCourse['product-strategy-in-practice'].instructorId,
 }
+
+// Prototype live-session totals shared by the Progress page.
+export const liveSessionStats = { attended: 14, total: 16 }
 
 // Prototype calendar events. type: session | deadline | milestone.
 export const calendarEvents = [

@@ -21,42 +21,36 @@ function course(slug) {
   return courses.find((item) => item.slug === slug)
 }
 
+// Session schedule has a single source of truth (sessionsByCourse).
+// Completed cohorts report no next session.
+function nextSessionFor(courseSlug, status) {
+  if (status === 'completed') return null
+  const session = sessionsByCourse[courseSlug]
+  if (!session) return null
+  return {
+    title: session.courseTitle,
+    day: session.day,
+    date: session.date,
+    time: session.time,
+    instructorId: session.instructorId,
+  }
+}
+
 export const learnerCohorts = [
   {
     id: 'cohort-001',
     courseSlug: 'product-strategy-in-practice',
     status: 'ongoing',
-    progress: 64,
-    nextLesson: 'Customer Discovery Workshop',
-    nextSession: {
-      title: 'Product Strategy in Practice',
-      day: 'Tuesday',
-      date: '2026-10-13',
-      time: '6:00 PM',
-      instructorId: 'jordan-reed',
-    },
   },
   {
     id: 'cohort-002',
     courseSlug: 'applied-ai-for-product-teams',
     status: 'ongoing',
-    progress: 41,
-    nextLesson: 'Evaluating Model Outputs',
-    nextSession: {
-      title: 'Applied AI for Product Teams',
-      day: 'Wednesday',
-      date: '2026-10-14',
-      time: '5:30 PM',
-      instructorId: 'maya-chen',
-    },
   },
   {
     id: 'cohort-003',
     courseSlug: 'leading-high-trust-teams',
     status: 'completed',
-    progress: 100,
-    nextLesson: null,
-    nextSession: null,
   },
 ]
 
@@ -64,6 +58,7 @@ export const cohortDetails = learnerCohorts.map((cohort) => {
   const base = course(cohort.courseSlug)
   return {
     ...cohort,
+    nextSession: nextSessionFor(cohort.courseSlug, cohort.status),
     title: base.title,
     category: base.category,
     image: base.image,
@@ -72,13 +67,6 @@ export const cohortDetails = learnerCohorts.map((cohort) => {
     instructor: base.instructor,
   }
 })
-
-export const dashboardStats = [
-  { id: 'active-cohorts', label: 'Active cohorts', value: '2' },
-  { id: 'average-progress', label: 'Average progress', value: '64%' },
-  { id: 'lessons-completed', label: 'Lessons completed', value: '18' },
-  { id: 'upcoming-sessions', label: 'Upcoming sessions', value: '3' },
-]
 
 // 35-day activity grid (5 weeks). 0 = inactive, 1 = active, 2 = high, 3 = milestone.
 export const learningActivity = [
