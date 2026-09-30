@@ -84,7 +84,7 @@ function SidebarContent({ onNavigate }) {
 
   const handleSignOut = () => {
     logout()
-    showToast('Signed out.', 'info')
+    showToast("You've been signed out.", 'info')
     navigate('/')
   }
 
