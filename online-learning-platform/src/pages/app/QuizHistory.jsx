@@ -80,10 +80,10 @@ export default function QuizHistory() {
       <div className="space-y-6">
         <header>
           <h1 className="text-2xl font-semibold tracking-tight text-anchor-text sm:text-3xl">
-            Quiz History
+            Quiz history
           </h1>
           <p className="mt-1.5 text-anchor-text-muted">
-            Every quiz attempt and score, in one place.
+            Review your attempts and results across your learning journey.
           </p>
         </header>
         <div className="rounded-xl border border-dashed border-anchor-border bg-anchor-surface px-6 py-16 text-center">
@@ -91,19 +91,27 @@ export default function QuizHistory() {
             ?
           </span>
           <p className="mt-4 text-sm font-semibold text-anchor-text">
-            No quiz attempts yet
+            No quiz attempts yet.
           </p>
           <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-anchor-text-muted">
-            When you complete a quiz in a cohort, your score, attempt number and
-            review notes will appear here.
+            Complete a lesson and take your first quiz to see your results
+            here.
           </p>
-          <button
-            type="button"
-            onClick={handleReset}
-            className="mt-6 rounded-lg bg-anchor-action px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-anchor-action-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action"
-          >
-            Restore demo attempts
-          </button>
+          <div className="mt-6 flex flex-col items-center justify-center gap-2 sm:flex-row">
+            <Link
+              to="/my-cohorts"
+              className="rounded-lg bg-anchor-action px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-anchor-action-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action"
+            >
+              Go to My Cohorts
+            </Link>
+            <button
+              type="button"
+              onClick={handleReset}
+              className="rounded-lg border border-anchor-border px-5 py-2.5 text-sm font-semibold text-anchor-text-muted transition-colors hover:text-anchor-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action"
+            >
+              Restore demo attempts
+            </button>
+          </div>
         </div>
       </div>
     )
@@ -114,10 +122,10 @@ export default function QuizHistory() {
       <header className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight text-anchor-text sm:text-3xl">
-            Quiz History
+            Quiz history
           </h1>
           <p className="mt-1.5 text-anchor-text-muted">
-            Every quiz attempt and score, in one place.
+            Review your attempts and results across your learning journey.
           </p>
         </div>
         <button

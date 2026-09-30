@@ -108,7 +108,7 @@ export default function Profile() {
       goals: form.goals,
     })
     setEditing(false)
-    showToast('Profile updated.')
+    showToast('Profile updated successfully.')
   }
 
   const avatarTone = AVATAR_COLORS[form.avatar] ?? AVATAR_COLORS.indigo
