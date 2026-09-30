@@ -13,8 +13,8 @@ function lesson(id, week, title, opts = {}) {
       opts.description ??
       'Watch the session replay, review the key ideas below, then complete the linked practice before the next live session.',
     resources: opts.resources ?? [
-      { label: 'Session slides (PDF)', href: '#' },
-      { label: 'Transcript', href: '#' },
+      { label: 'Session slides (PDF)' },
+      { label: 'Transcript' },
     ],
     assignmentId: opts.assignmentId ?? null,
     ...opts,
@@ -36,8 +36,8 @@ const productStrategyWeeks = [
         description:
           'Why positioning fails in practice, the three inputs that matter, and how to draft a statement you can actually test with customers.',
         resources: [
-          { label: 'Positioning template', href: '#' },
-          { label: 'Example teardowns', href: '#' },
+          { label: 'Positioning template' },
+          { label: 'Example teardowns' },
         ],
         assignmentId: 'assignment-004',
       }),

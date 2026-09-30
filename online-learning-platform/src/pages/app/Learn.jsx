@@ -270,13 +270,15 @@ export default function Learn() {
             <ul className="mt-2 space-y-1.5">
               {active.resources.map((r) => (
                 <li key={r.label}>
-                  <a
-                    href={r.href}
-                    onClick={(e) => e.preventDefault()}
+                  <button
+                    type="button"
+                    onClick={() =>
+                      showToast(`${r.label} is a prototype resource.`, 'info')
+                    }
                     className="text-sm font-medium text-anchor-action underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action"
                   >
                     {r.label} →
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
