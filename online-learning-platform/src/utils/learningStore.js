@@ -110,47 +110,65 @@ export function getLessonsCompletedTotal(cohorts, userId) {
 }
 
 // --- Assignment submissions (ids + dates, shared by Assignments/Progress) ---
+// Canonical per-user shape: { [userId or 'global']: string[] }.
+export const SUBMITTED_STORAGE_KEY = 'anchorpoint-submitted-assignments'
 const SUBMITTED_DATES_KEY = 'anchorpoint-submitted-assignment-dates'
 
+function submissionBucket(userId) {
+  return userId ?? 'global'
+}
+
 export function loadSubmittedAssignmentIds(userId) {
-  const all = readJson('anchorpoint-submitted-assignments', [])
-  if (Array.isArray(all)) return all
+  const all = readJson(SUBMITTED_STORAGE_KEY, {})
+  if (Array.isArray(all)) {
+    // Legacy global shape (pre per-user): visible to everyone until migrated.
+    return all
+  }
   if (all && typeof all === 'object') {
-    const scoped = all[userKey('ids', userId)] ?? all.ids ?? []
-    return Array.isArray(scoped) ? scoped : []
+    const list = all[submissionBucket(userId)]
+    return Array.isArray(list) ? list : []
   }
   return []
 }
 
 export function saveSubmittedAssignmentIds(userId, ids) {
-  const all = readJson('anchorpoint-submitted-assignments', [])
-  if (Array.isArray(all)) {
-    writeJson('anchorpoint-submitted-assignments', ids)
-    return
-  }
-  const scoped = userKey('ids', userId)
-  writeJson('anchorpoint-submitted-assignments', { ...(all ?? {}), [scoped]: ids })
+  const all = readJson(SUBMITTED_STORAGE_KEY, {})
+  const base = Array.isArray(all)
+    ? { global: all } // migrate legacy global ids into the global bucket
+    : all && typeof all === 'object'
+      ? all
+      : {}
+  writeJson(SUBMITTED_STORAGE_KEY, {
+    ...base,
+    [submissionBucket(userId)]: ids,
+  })
 }
 
 export function loadSubmittedAssignmentDates(userId) {
   const all = readJson(SUBMITTED_DATES_KEY, {})
   if (!all || typeof all !== 'object' || Array.isArray(all)) return {}
-  if (userId && all[userId] && typeof all[userId] === 'object') return all[userId]
+  const scoped = all[submissionBucket(userId)]
+  if (scoped && typeof scoped === 'object') return scoped
   // Legacy global shape: { assignmentId: isoDate }.
-  const looksLegacy = Object.values(all).every((v) => typeof v === 'string')
-  if (looksLegacy) return all
+  if (Object.values(all).every((v) => typeof v === 'string')) return all
   return {}
 }
 
 export function saveSubmittedAssignmentDate(userId, assignmentId, isoDate) {
   const all = readJson(SUBMITTED_DATES_KEY, {})
-  const base = all && typeof all === 'object' && !Array.isArray(all) ? all : {}
-  if (userId) {
-    const scoped = base[userId] && typeof base[userId] === 'object' ? base[userId] : {}
-    writeJson(SUBMITTED_DATES_KEY, { ...base, [userId]: { ...scoped, [assignmentId]: isoDate } })
-  } else {
-    writeJson(SUBMITTED_DATES_KEY, { ...base, [assignmentId]: isoDate })
+  let base = all && typeof all === 'object' && !Array.isArray(all) ? { ...all } : {}
+  if (
+    Object.keys(base).length > 0 &&
+    Object.values(base).every((v) => typeof v === 'string')
+  ) {
+    base = { global: base } // migrate legacy global dates
   }
+  const bucket = submissionBucket(userId)
+  const current = base[bucket] && typeof base[bucket] === 'object' ? base[bucket] : {}
+  writeJson(SUBMITTED_DATES_KEY, {
+    ...base,
+    [bucket]: { ...current, [assignmentId]: isoDate },
+  })
 }
 
 export function todayISO() {
