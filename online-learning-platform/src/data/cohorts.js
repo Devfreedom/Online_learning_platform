@@ -1,5 +1,18 @@
 import { courses } from './courses'
 import { instructors } from './instructors'
+import {
+  SUBMITTED_STORAGE_KEY,
+  assignmentDetails,
+  upcomingAssignments,
+} from './assignments'
+import { certificates } from './certificates'
+import { calendarEvents, nextLiveSession } from './sessions'
+
+// Re-export canonical prototype data so existing pages keep working
+// while new pages import from the focused modules directly.
+export { SUBMITTED_STORAGE_KEY, assignmentDetails, upcomingAssignments }
+export { certificates }
+export { calendarEvents, nextLiveSession }
 
 // Central learner/cohort data for the prototype.
 // All names, dates, progress values and sessions are fictional demo content.
