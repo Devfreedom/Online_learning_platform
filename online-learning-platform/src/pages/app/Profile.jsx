@@ -25,7 +25,7 @@ function buildForm(source) {
     firstName: source?.firstName ?? '',
     lastName: source?.lastName ?? '',
     email: source?.email ?? '',
-    educationLevel: source?.educationLevel ?? 'undergraduate',
+    educationLevel: normalizeEducationLevel(source?.educationLevel),
     goals: Array.isArray(source?.goals) ? source.goals : [],
     avatar: source?.avatar ?? 'indigo',
     goalInput: '',
