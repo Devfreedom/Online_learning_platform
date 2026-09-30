@@ -187,17 +187,24 @@ function DetailView({ assignment, state, submittedOn, onBack, onSubmit }) {
 }
 
 export default function Assignments() {
+  const { user } = useAuth()
   const [tab, setTab] = useState('upcoming')
   const [selectedId, setSelectedId] = useState(null)
-  const [submittedIds, setSubmittedIds] = useState(loadSubmittedIds)
+  const [submittedIds, setSubmittedIds] = useState(() =>
+    loadSubmittedAssignmentIds(user?.id),
+  )
+  const [submittedDates, setSubmittedDates] = useState(() =>
+    loadSubmittedAssignmentDates(user?.id),
+  )
 
   const withState = useMemo(
     () =>
       assignmentDetails.map((assignment) => ({
         ...assignment,
         state: effectiveState(assignment, submittedIds),
+        submittedOn: submittedOnFor(assignment, submittedDates),
       })),
-    [submittedIds],
+    [submittedIds, submittedDates],
   )
 
   const filtered = withState.filter((assignment) => assignment.state === tab)
@@ -205,9 +212,12 @@ export default function Assignments() {
 
   const handleSubmit = (id) => {
     const next = [...submittedIds, id]
+    const iso = todayISO()
     setSubmittedIds(next)
-    saveSubmittedIds(next)
-    showToast('Assignment submitted.')
+    saveSubmittedAssignmentIds(user?.id, next)
+    saveSubmittedAssignmentDate(user?.id, id, iso)
+    setSubmittedDates((prev) => ({ ...prev, [id]: iso }))
+    showToast('Assignment submitted successfully.')
     setTab('submitted')
   }
 
@@ -216,6 +226,7 @@ export default function Assignments() {
       <DetailView
         assignment={selected}
         state={selected.state}
+        submittedOn={selected.submittedOn}
         onBack={() => setSelectedId(null)}
         onSubmit={handleSubmit}
       />
@@ -229,7 +240,7 @@ export default function Assignments() {
           Assignments
         </h1>
         <p className="mt-1.5 text-anchor-text-muted">
-          Practical work from your cohorts, with feedback as you build.
+          Keep track of your cohort work, deadlines and feedback.
         </p>
       </header>
 
