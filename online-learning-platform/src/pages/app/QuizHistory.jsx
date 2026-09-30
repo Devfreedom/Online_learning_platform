@@ -176,7 +176,7 @@ export default function QuizHistory() {
       ) : (
         <>
           {/* Desktop table */}
-          <div className="hidden overflow-hidden rounded-xl border border-anchor-border bg-anchor-surface md:block">
+          <div className="hidden overflow-x-auto rounded-xl border border-anchor-border bg-anchor-surface md:block">
             <table className="w-full text-left text-sm">
               <thead>
                 <tr className="border-b border-anchor-border bg-anchor-bg/60 text-xs uppercase tracking-wide text-anchor-text-muted">
