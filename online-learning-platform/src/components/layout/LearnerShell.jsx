@@ -162,7 +162,7 @@ export default function LearnerShell() {
   return (
     <div className="learner-workspace min-h-screen bg-anchor-bg lg:flex">
       {/* Desktop sidebar */}
-      <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-64 shrink-0 bg-anchor-primary lg:block">
+      <aside className="sticky top-0 hidden h-screen w-64 shrink-0 bg-anchor-primary lg:block">
         <SidebarContent />
       </aside>
 
@@ -207,7 +207,7 @@ export default function LearnerShell() {
 
       {/* Main column */}
       <div className="min-w-0 flex-1">
-        <div className="sticky top-16 z-30 flex h-12 items-center gap-3 border-b border-anchor-border bg-anchor-surface/95 px-4 backdrop-blur lg:hidden">
+        <div className="sticky top-0 z-30 flex h-12 items-center gap-3 border-b border-anchor-border bg-anchor-surface/95 px-4 backdrop-blur lg:hidden">
           <button
             type="button"
             onClick={() => setDrawerOpen(true)}
