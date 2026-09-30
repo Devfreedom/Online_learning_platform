@@ -62,7 +62,7 @@ export default function Settings() {
 
   const handleToggle = (key) => (value) => {
     update({ [key]: value })
-    showToast('Settings saved.')
+    showToast('Setting saved.')
   }
 
   const handleAppearance = (appearance) => {

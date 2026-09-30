@@ -123,7 +123,7 @@ export default function Profile() {
       <header className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight text-anchor-text sm:text-3xl">
-            Profile
+            My profile
           </h1>
           <p className="mt-1.5 text-anchor-text-muted">
             Manage how you appear across Anchorpoint.
