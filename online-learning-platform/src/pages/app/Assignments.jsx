@@ -29,14 +29,6 @@ function instructorFor(assignment) {
   return course?.instructor ?? 'Instructor'
 }
 
-function loadSubmittedIds() {
-  return loadSubmittedAssignmentIds()
-}
-
-function saveSubmittedIds(ids) {
-  saveSubmittedAssignmentIds(undefined, ids)
-}
-
 function effectiveState(assignment, submittedIds) {
   if (assignment.seededState === 'completed') return 'completed'
   if (submittedIds.includes(assignment.id) || assignment.seededState === 'submitted') {

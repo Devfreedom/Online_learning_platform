@@ -141,7 +141,6 @@ export default function Calendar() {
               Next month
             </button>
           </div>
-          </div>
 
           <div className="mt-4 grid grid-cols-7 gap-1" role="row">
             {WEEKDAYS.map((day) => (
