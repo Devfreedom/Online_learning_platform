@@ -19,7 +19,18 @@ const monthDayFormatter = new Intl.DateTimeFormat('en-US', {
   day: 'numeric',
 })
 
+const longDateFormatter = new Intl.DateTimeFormat('en-US', {
+  weekday: 'long',
+  month: 'long',
+  day: 'numeric',
+})
+
 export function formatMonthDay(isoDate) {
   const [year, month, day] = isoDate.split('-').map(Number)
   return monthDayFormatter.format(new Date(year, month - 1, day))
+}
+
+export function formatLongDate(isoDate) {
+  const [year, month, day] = isoDate.split('-').map(Number)
+  return longDateFormatter.format(new Date(year, month - 1, day))
 }
