@@ -282,14 +282,27 @@ export default function Learn() {
             </ul>
 
             {linkedAssignment && (
-              <div className="mt-5 rounded-lg bg-anchor-accent/10 px-4 py-3 ring-1 ring-anchor-accent/30">
-                <p className="text-sm font-semibold text-anchor-text">
-                  Linked assignment: {linkedAssignment.title}
-                </p>
+              <div className="mt-5 rounded-lg bg-anchor-bg px-4 py-3 ring-1 ring-anchor-border">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <p className="text-sm font-semibold text-anchor-text">
+                    Related assignment: {linkedAssignment.title}
+                  </p>
+                  <span
+                    className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold capitalize ${
+                      linkedAssignmentState === 'completed'
+                        ? 'bg-anchor-success/10 text-anchor-success'
+                        : linkedAssignmentState === 'submitted'
+                          ? 'bg-anchor-accent/15 text-amber-700'
+                          : 'bg-anchor-action/10 text-anchor-action'
+                    }`}
+                  >
+                    {linkedAssignmentState}
+                  </span>
+                </div>
                 <p className="mt-0.5 text-xs text-anchor-text-muted">
                   Due {formatDate(linkedAssignment.dueDate)} · {linkedAssignment.effort} ·{' '}
                   <Link to="/assignments" className="font-semibold text-anchor-action underline-offset-4 hover:underline">
-                    Open in Assignments
+                    Open assignment
                   </Link>
                 </p>
               </div>
@@ -373,11 +386,28 @@ export default function Learn() {
                 </p>
                 <button
                   type="button"
-                  onClick={() => showToast('Meeting link is a prototype placeholder.', 'info')}
+                  onClick={() => setSessionDetailOpen((open) => !open)}
+                  aria-expanded={sessionDetailOpen}
                   className="mt-3 w-full rounded-lg bg-anchor-action px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-anchor-action-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor-action"
                 >
-                  Join session
+                  View session
                 </button>
+                {sessionDetailOpen && (
+                  <div className="mt-3 rounded-lg bg-anchor-bg px-4 py-3 text-sm ring-1 ring-anchor-border">
+                    <p className="font-semibold text-anchor-text">{session.courseTitle}</p>
+                    <p className="mt-1 text-xs text-anchor-text-muted">
+                      {session.day}, {formatDate(session.date)} · {session.time}
+                    </p>
+                    <p className="mt-1 text-xs text-anchor-text-muted">
+                      Instructor {session.instructorName}
+                    </p>
+                    <p className="mt-2 text-xs leading-relaxed text-anchor-text-muted">
+                      Prototype session detail — the live meeting link, agenda
+                      and recording would appear here. No real video call is
+                      connected.
+                    </p>
+                  </div>
+                )}
               </div>
             ) : (
               <p className="mt-2 text-sm text-anchor-text-muted">No upcoming session for this course.</p>
