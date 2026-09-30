@@ -6,7 +6,7 @@ import { flattenLessons, getCurriculum } from '../../data/lessons'
 import { sessionsByCourse } from '../../data/sessions'
 import { useAuth } from '../../hooks/useAuth'
 import { formatDate } from '../../utils/formatDate'
-import { completedLessonIds, markLessonComplete } from '../../utils/learningStore'
+import { completedLessonIds, getCourseProgress, markLessonComplete } from '../../utils/learningStore'
 import { showToast } from '../../utils/toast'
 
 function CurriculumItem({ lessonItem, state, onSelect }) {
