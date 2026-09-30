@@ -1,5 +1,8 @@
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router'
 import { calendarEvents } from '../../data/cohorts'
+import { courses } from '../../data/courses'
+import { sessionsByCourse } from '../../data/sessions'
 import { formatDate } from '../../utils/formatDate'
 
 const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
@@ -16,7 +19,26 @@ const TYPE_LABEL = {
   milestone: 'Milestone',
 }
 
-const MONTH_NAMES = [
+const COURSE_SLUG_BY_COHORT = {
+  'Product Strategy': 'product-strategy-in-practice',
+  'Applied AI': 'applied-ai-for-product-teams',
+  'High-Trust Teams': 'leading-high-trust-teams',
+  Marketing: 'marketing-systems-that-scale',
+}
+
+function instructorForEvent(event) {
+  const slug = COURSE_SLUG_BY_COHORT[event.cohort]
+  const session = slug ? sessionsByCourse[slug] : null
+  if (session) return session.instructorName
+  const course = courses.find((item) => item.slug === slug)
+  return course?.instructor ?? null
+}
+
+function cohortLinkForEvent(event) {
+  const slug = COURSE_SLUG_BY_COHORT[event.cohort]
+  if (event.type === 'session' && slug) return { to: `/learn/${slug}`, label: 'View lesson' }
+  return { to: '/my-cohorts', label: 'View cohort' }
+}
   'January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December',
 ]
