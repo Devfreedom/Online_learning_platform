@@ -203,6 +203,10 @@ export default function Assignments() {
   const selected = withState.find((assignment) => assignment.id === selectedId)
 
   const handleSubmit = (id) => {
+    if (submittedIds.includes(id)) {
+      setTab('submitted')
+      return
+    }
     const next = [...submittedIds, id]
     const iso = todayISO()
     setSubmittedIds(next)

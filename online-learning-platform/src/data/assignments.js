@@ -1,7 +1,5 @@
 // Canonical assignment data. cohorts.js re-exports these for backward compat.
 
-export const SUBMITTED_STORAGE_KEY = 'anchorpoint-submitted-assignments'
-
 export const upcomingAssignments = [
   {
     id: 'assignment-001',
