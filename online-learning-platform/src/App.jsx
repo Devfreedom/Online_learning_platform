@@ -30,6 +30,7 @@ import QuizHistory from './pages/app/QuizHistory'
 import Profile from './pages/app/Profile'
 import Settings from './pages/app/Settings'
 import { applyAppearance, loadSettings } from './utils/learningStore'
+import { loadStoredUser } from './utils/auth'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -54,7 +55,7 @@ function PublicLayout() {
 function App() {
   useEffect(() => {
     try {
-      const stored = loadSettings()
+      const stored = loadSettings(loadStoredUser()?.id)
       applyAppearance(stored.appearance)
     } catch {
       // Ignore — default light theme applies.
