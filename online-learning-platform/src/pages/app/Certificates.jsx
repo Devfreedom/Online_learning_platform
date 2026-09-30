@@ -36,6 +36,9 @@ function CertificateView({ certificate, learnerName, onBack }) {
         </h1>
         <p className="mt-4 text-sm text-anchor-text-muted">Awarded to</p>
         <p className="mt-1 text-xl font-semibold text-anchor-text">{learnerName}</p>
+        <p className="mt-1 text-xs text-anchor-text-muted">
+          has successfully completed
+        </p>
         <dl className="mx-auto mt-6 grid max-w-md gap-3 text-sm sm:grid-cols-2">
           <div className="rounded-lg bg-anchor-bg px-4 py-3 ring-1 ring-anchor-border">
             <dt className="text-xs text-anchor-text-muted">Completed</dt>
@@ -50,6 +53,9 @@ function CertificateView({ certificate, learnerName, onBack }) {
             </dd>
           </div>
         </dl>
+        <p className="mt-4 text-xs font-semibold tracking-wide text-anchor-text-muted">
+          Certificate ID · {certificate.certificateId}
+        </p>
         {instructor && (
           <p className="mt-4 text-xs text-anchor-text-muted">
             {instructor.credential}
@@ -88,7 +94,7 @@ export default function Certificates() {
           Certificates
         </h1>
         <p className="mt-1.5 text-anchor-text-muted">
-          Proof of the cohorts you&apos;ve finished.
+          Your completed learning milestones.
         </p>
       </header>
 
